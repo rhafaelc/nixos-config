@@ -26,6 +26,7 @@
 
     settings = {
       background_opacity = "0.93";
+      shell = "${pkgs.bash}/bin/bash --login -c 'nu --login --interactive'";
     };
   };
 }
