@@ -8,5 +8,6 @@
     ../../modules/home-manager/zellij
     ../../modules/home-manager/terminal
     ../../modules/home-manager/shells
+    ../../modules/home-manager/hyprland
   ];
 }

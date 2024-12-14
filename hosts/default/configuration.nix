@@ -11,6 +11,7 @@
       inputs.home-manager.nixosModules.default
 
       ../../modules/nixos/appearance
+      ../../modules/nixos/hyprland
     ];
 
   # Bootloader.
