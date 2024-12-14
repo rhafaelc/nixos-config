@@ -20,12 +20,8 @@
     # all the built-in themes are packaged into an extra package named `kitty-themes`
     # and it's installed by home-manager if `theme` is specified.
     themeFile = "Catppuccin-Mocha";
-    font = {
-      name = "JetBrainsMono Nerd Font";
-    };
 
     settings = {
-      background_opacity = "0.93";
       shell = "${pkgs.bash}/bin/bash --login -c 'nu --login --interactive'";
     };
   };
