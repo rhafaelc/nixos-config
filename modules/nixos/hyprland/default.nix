@@ -12,7 +12,6 @@
   environment.systemPackages = with pkgs; [
      playerctl
      wofi
-     wpctl
      brightnessctl     
 
 #    pyprland

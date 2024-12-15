@@ -8,7 +8,14 @@
     enable = true;
 
     settings = {
-      monitor=",1920x1080, auto, auto";
+      monitor= [
+        ",1920x1080, auto, 1, bitdepth, 8"
+        ",preferred,auto,1,mirror,eDP-1,bitdepth,8"
+      ];
+
+      xwayland = {
+        force_zero_scaling = true;
+      };
 
 
       "$terminal" = "kitty";
@@ -121,12 +128,12 @@
         sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
 
         touchpad = {
-            natural_scroll = false;
+            natural_scroll = true;
         };
       };
 
       gestures = {
-        workspace_swipe = false;
+        workspace_swipe = true;
       };
 
 
