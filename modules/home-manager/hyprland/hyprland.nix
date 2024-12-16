@@ -23,11 +23,12 @@
       "$menu" = "wofi --show drun";
 
 
-      # exec-once = [
+      exec-once = [
+        "waybar"
       #   "$terminal"
       #   "nm-applet &"
       #   "waybar & hyprpaper & firefox"
-      # ];
+      ];
 
       env = [
         "XCURSOR_SIZE,24"
