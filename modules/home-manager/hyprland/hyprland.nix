@@ -7,6 +7,9 @@
   home.packages = [
     pkgs.font-awesome
     pkgs.nerd-fonts.jetbrains-mono
+    pkgs.pwvucontrol
+    pkgs.playerctl
+    pkgs.brightnessctl
   ];
 
 
