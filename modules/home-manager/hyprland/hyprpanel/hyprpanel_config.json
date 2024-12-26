@@ -1,0 +1,13 @@
+{
+  "bar.customModules.updates.pollingInterval": 1440000,
+  "theme.bar.floating": true,
+  "menus.clock.time.military": false,
+  "theme.font.size": "0.9rem",
+  "theme.font.name": "JetBrainsMonoNL Nerd Font Propo Italic",
+  "theme.font.weight": 400,
+  "theme.bar.transparent": true,
+  "theme.bar.buttons.borderSize": "0.1em",
+  "theme.bar.buttons.enableBorders": true,
+  "theme.bar.buttons.radius": "0.5em",
+  "bar.launcher.autoDetectIcon": true
+}

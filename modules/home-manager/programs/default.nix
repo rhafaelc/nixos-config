@@ -1,9 +1,9 @@
 {
   imports = [
-    ./git.nix
-    ./spotify.nix
-    ./vscode.nix
-    ./zen-browser.nix
-    ./vesktop.nix
+    ./git
+    ./spotify
+    ./vscode
+    ./zen-browser
+    ./vesktop
   ];
 }

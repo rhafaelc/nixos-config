@@ -1,6 +1,6 @@
 {
   imports = [
-    ./stylix.nix
-    ./catppuccin.nix
+    ./stylix/stylix.nix
+    ./catppuccin/catppuccin.nix
   ];
 }

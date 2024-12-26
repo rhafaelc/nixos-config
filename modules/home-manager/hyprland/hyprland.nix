@@ -24,7 +24,7 @@
 
 
       exec-once = [
-        "waybar"
+        "hyprpanel"
       #   "$terminal"
       #   "nm-applet &"
       #   "waybar & hyprpaper & firefox"
