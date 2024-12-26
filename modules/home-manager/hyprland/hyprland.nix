@@ -24,12 +24,12 @@
 
 
       "$terminal" = "kitty";
-      "$fileManager" = "dolphin";
+      "$fileManager" = "nautilus";
       "$menu" = "wofi --show drun";
 
 
       exec-once = [
-        "waybar"
+        "waybar & swaync"
       #   "$terminal"
       #   "nm-applet &"
       #   "waybar & hyprpaper & firefox"
@@ -157,14 +157,18 @@
         "$mainMod, E, exec, $fileManager"
         "$mainMod, V, togglefloating,"
         "$mainMod, R, exec, $menu"
-        "$mainMod, P, pseudo," # dwindle
-        "$mainMod, J, togglesplit," # dwindle
+        # "$mainMod, P, pseudo," # dwindle
+        # "$mainMod, J, togglesplit," # dwindle
 
-        # Move focus with mainMod + arrow keys
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
+        ", PRINT, exec, hyprshot -m window"
+	"$mainMod SHIFT, S, exec, hyprshot -m region --clipboard-only"
+
+        "$mainMod SHIFT, L, exec, hyprlock"
+
+        "$mainMod, h, movefocus, l"
+        "$mainMod, j, movefocus, d"
+        "$mainMod, k, movefocus, u"
+        "$mainMod, l, movefocus, r"
 
         # Switch workspaces with mainMod + [0-9]
         "$mainMod, 1, workspace, 1"
@@ -192,18 +196,21 @@
 
 
         # Example special workspace (scratchpad)
-        "$mainMod, S, togglespecialworkspace, magic"
-        "$mainMod SHIFT, S, movetoworkspace, special:magic"
+        "ALT, TAB, togglespecialworkspace, magic"
+        "ALT SHIFT, TAB, movetoworkspace, special:magic"
 
         # Scroll through existing workspaces with mainMod + scroll
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
+        "$mainMod CTRL_L, right, workspace, e+1"
+        "$mainMod CTRL_L, left, workspace, e-1"
+       
       ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = [
         "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
+        "$mainMod CTRL_L, mouse:272, resizewindow"
       ];
 
 
