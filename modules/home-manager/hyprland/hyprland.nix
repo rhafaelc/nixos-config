@@ -8,6 +8,11 @@
     enable = true;
 
     settings = {
+      misc = {
+        disable_hyprland_qtutils_check = true;
+      };
+
+
       monitor= [
         ",1920x1080, auto, 1, bitdepth, 8"
         ",preferred,auto,1,mirror,eDP-1,bitdepth,8"
@@ -24,7 +29,7 @@
 
 
       exec-once = [
-        "hyprpanel"
+        "waybar"
       #   "$terminal"
       #   "nm-applet &"
       #   "waybar & hyprpaper & firefox"
