@@ -1,6 +1,8 @@
 {
   imports = [
     ./hyprland.nix
+    ./background.nix
+
     ./wofi
     ./waybar
     ./hyprshot

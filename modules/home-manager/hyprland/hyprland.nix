@@ -4,6 +4,16 @@
   config,
   ... 
 } : {
+  home.packages = [
+    pkgs.font-awesome
+    pkgs.nerd-fonts.jetbrains-mono
+  ];
+
+
+  xdg.configFile = {
+    "hypr/mocha.conf".source = ./mocha.conf;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
 

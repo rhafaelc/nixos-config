@@ -4,9 +4,6 @@
   config,
   ...
 }: {
-
-  home.packages = [pkgs.font-awesome];
-
   programs.waybar = {
     enable = true;
   };
