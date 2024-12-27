@@ -21,6 +21,8 @@
     # and it's installed by home-manager if `theme` is specified.
     themeFile = "Catppuccin-Mocha";
 
+    font.name = lib.mkForce "JetBrainsMono Nerd Font";
+
     settings = {
       shell = "${pkgs.bash}/bin/bash --login -c 'nu --login --interactive'";
       background_opacity = lib.mkForce "0.85";
