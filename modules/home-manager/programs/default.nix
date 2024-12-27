@@ -5,5 +5,6 @@
     ./vscode
     ./zen-browser
     ./vesktop
+    ./fastfetch
   ];
 }

@@ -23,7 +23,8 @@
 
     settings = {
       shell = "${pkgs.bash}/bin/bash --login -c 'nu --login --interactive'";
-      background_opacity = lib.mkForce "0.93";
+      background_opacity = lib.mkForce "0.85";
+      background_blur = 1;
       window_padding_width = 4;
     };
   };
