@@ -1,4 +1,5 @@
 {
+  pkgs,
   ...
 }: {
   programs.starship = {
@@ -7,5 +8,7 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
     enableNushellIntegration = true;
+
+    settings = pkgs.lib.importTOML ./starship.toml;
   };
 }

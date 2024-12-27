@@ -1,6 +1,6 @@
 { ... }: {
   imports = [
-    ./nushell.nix
-    ./starship.nix
+    ./nushell
+    ./starship
   ];
 }
