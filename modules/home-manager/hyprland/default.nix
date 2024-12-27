@@ -2,6 +2,8 @@
   imports = [
     ./hyprland.nix
     ./background.nix
+    ./btop
+
 
     ./rofi
     ./waybar
