@@ -43,8 +43,7 @@
 
 
       exec-once = [
-        "nm-apllet &"
-        "waybar & swaync"
+        "waybar & swaync & nm-applet"
       #   "$terminal"
       #   "nm-applet &"
       #   "waybar & hyprpaper & firefox"

@@ -9,5 +9,7 @@
     ./swaync
     ./hyprlock
     ./hypridle
+
+    ./wlogout
   ];
 }
