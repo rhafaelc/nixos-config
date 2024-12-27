@@ -3,7 +3,7 @@
     ./hyprland.nix
     ./background.nix
 
-    ./wofi
+    ./rofi
     ./waybar
     ./hyprshot
     ./swaync

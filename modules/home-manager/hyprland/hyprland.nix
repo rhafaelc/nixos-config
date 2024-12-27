@@ -38,7 +38,7 @@
 
       "$terminal" = "kitty";
       "$fileManager" = "nautilus";
-      "$menu" = "wofi --show drun";
+      "$menu" = "rofi -show drun";
 
 
       exec-once = [
@@ -55,7 +55,7 @@
 
       general = {
         gaps_in = 5;
-        gaps_out = 20;
+        gaps_out = 8;
 
         border_size = 2;
 
