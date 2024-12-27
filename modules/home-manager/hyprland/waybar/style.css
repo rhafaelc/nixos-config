@@ -33,7 +33,7 @@ window > box {
   margin-right: 5px;
   margin-top: 5px;
   background-color: shade(@base, 0.9);
-  opacity: 0.7;
+  opacity: 0.8;
   padding: 3px;
   padding-left: 8px;
   border: 2px none #33ccff;
@@ -47,17 +47,16 @@ window > box {
   padding-bottom: 5px;
   padding-left: 6px;
   padding-right: 6px;
+  color: rgb(180, 190, 254);
 }
 #workspaces button.active {
-  background-color: rgb(181, 232, 224);
-  color: rgb(26, 24, 38);
+  color: rgb(137, 220, 235);
 }
 #workspaces button.urgent {
   color: rgb(26, 24, 38);
 }
 #workspaces button:hover {
-  background-color: rgb(248, 189, 150);
-  color: rgb(26, 24, 38);
+  color: rgb(116, 199, 236);
 }
 tooltip {
   background: rgb(48, 45, 65);
@@ -149,14 +148,4 @@ tooltip label {
 #tray {
   padding-right: 8px;
   padding-left: 10px;
-}
-#mpd.paused {
-  color: #414868;
-  font-style: italic;
-}
-#mpd.stopped {
-  background: transparent;
-}
-#mpd {
-  color: #c0caf5;
 }

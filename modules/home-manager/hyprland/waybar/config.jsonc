@@ -24,8 +24,8 @@
     "format": "{icon}",
     "on-click": "activate",
     "format-icons": {
-      "focused": "",
-      "default": "〇",
+      "active": "",
+      "default": "",
     },
   },
   "clock": {
