@@ -24,6 +24,7 @@ $docker_context\
 [](fg:blue bg:purple)\
 $time\
 [ ](fg:purple)\
+$nix_shell\
 $line_break$character"""
 
 palette = 'catppuccin_mocha'
@@ -189,3 +190,9 @@ vimcmd_symbol = '[](bold fg:creen)'
 vimcmd_replace_one_symbol = '[](bold fg:purple)'
 vimcmd_replace_symbol = '[](bold fg:purple)'
 vimcmd_visual_symbol = '[](bold fg:lavender)'
+
+
+[nix_shell]
+disabled = false
+impure_msg = 'nix-shell'
+format = ' via [$symbol$state](bold blue)'
