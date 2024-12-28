@@ -10,7 +10,6 @@
     pkgs.pwvucontrol
     pkgs.playerctl
     pkgs.brightnessctl
-    pkgs.networkmanagerapplet
   ];
 
 
@@ -43,7 +42,7 @@
 
 
       exec-once = [
-        "waybar & swaync & nm-applet"
+        "waybar & swaync"
       #   "$terminal"
       #   "nm-applet &"
       #   "waybar & hyprpaper & firefox"
