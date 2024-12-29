@@ -12,9 +12,9 @@
     catppuccin.url = "github:catppuccin/nix";
 
     hyprland.url = "github:hyprwm/Hyprland";
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    nixvim.url = "github:rhafaelc/nixvim";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {

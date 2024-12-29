@@ -10,6 +10,7 @@
     pkgs.pwvucontrol
     pkgs.playerctl
     pkgs.brightnessctl
+    pkgs.wl-clipboard
   ];
 
 
