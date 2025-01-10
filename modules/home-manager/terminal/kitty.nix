@@ -26,6 +26,7 @@
     font.name = lib.mkForce "JetBrainsMono Nerd Font";
 
     settings = {
+      cursor_trail = 3;
       shell = "zsh";
       background_opacity = lib.mkForce "0.85";
       background_blur = 1;
