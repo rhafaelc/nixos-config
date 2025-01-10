@@ -6,6 +6,5 @@
     ./zen-browser
     ./vesktop
     ./fastfetch
-    ./nixvim
   ];
 }

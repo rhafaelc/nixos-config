@@ -12,6 +12,7 @@
 
       ../../modules/nixos/appearance
       ../../modules/nixos/hyprland
+      ../../modules/nixos/nvf
     ];
 
   # Bootloader.
