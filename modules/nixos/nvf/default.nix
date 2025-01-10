@@ -27,9 +27,12 @@
           go.enable = true;
          };
 
-
+        extraPlugins = with pkgs.vimPlugins; {
+          vim-be-good = {
+            package = vim-be-good;
+          };
+        };
       };
-
-   };
+    };
   };
 }
