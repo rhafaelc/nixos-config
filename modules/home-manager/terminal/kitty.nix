@@ -21,10 +21,12 @@
     # and it's installed by home-manager if `theme` is specified.
     themeFile = "Catppuccin-Mocha";
 
+    shellIntegration.enableZshIntegration = true;
+
     font.name = lib.mkForce "JetBrainsMono Nerd Font";
 
     settings = {
-      shell = "${pkgs.bash}/bin/bash --login -c 'nu --login --interactive'";
+      shell = "zsh";
       background_opacity = lib.mkForce "0.85";
       background_blur = 1;
       window_padding_width = 4;
