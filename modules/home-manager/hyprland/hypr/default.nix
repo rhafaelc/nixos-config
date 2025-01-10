@@ -176,7 +176,7 @@
         # "$mainMod, J, togglesplit," # dwindle
 
         ", PRINT, exec, hyprshot -m window"
-	"$mainMod SHIFT, S, exec, hyprshot -m region --clipboard-only"
+	      "$mainMod SHIFT, S, exec, hyprshot -m region --clipboard-only"
 
         "$mainMod SHIFT, L, exec, hyprlock"
 

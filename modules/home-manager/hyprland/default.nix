@@ -1,6 +1,6 @@
 {
   imports = [
-    ./hyprland.nix
+    ./hypr
     ./background.nix
     ./btop
 
