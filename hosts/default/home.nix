@@ -8,6 +8,7 @@
     ../../modules/home-manager/terminal
     ../../modules/home-manager/shells
     ../../modules/home-manager/hyprland
+    ../../modules/home-manager/themes
   ];
 
   # Place Files Inside Home Directory
