@@ -17,22 +17,50 @@
     neovim.url = "github:rhafaelc/neovim";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations = {
-      default = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./hosts/default/configuration.nix
-          inputs.stylix.nixosModules.stylix
-          inputs.catppuccin.nixosModules.catppuccin
-        ];
-      }; 
-      workmachine = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./hosts/workmachine/configuration.nix
-        ];
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      nixosConfigurations = {
+        default = let
+          variables = import ./hosts/default/variables.nix;
+        in nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs variables; };
+          modules = [
+            ./hosts/default/configuration.nix
+            inputs.stylix.nixosModules.stylix
+            inputs.catppuccin.nixosModules.catppuccin
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs variables; };
+                users.${variables.username} = ./hosts/default/home.nix;
+                backupFileExtension = "backup";
+              };
+            }
+          ];
+        };
+
+        workmachine = let
+          variables = import ./hosts/workmachine/variables.nix;
+        in nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs variables; };
+          modules = [
+            ./hosts/workmachine/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs variables; };
+                users.${variables.username} = ./hosts/workmachine/home.nix;
+              };
+            }
+          ];
+        };
       };
     };
-  };
 }
