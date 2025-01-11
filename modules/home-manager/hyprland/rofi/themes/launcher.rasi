@@ -1,0 +1,40 @@
+@theme "catppuccin-mocha"
+
+window {
+    height: 500px;
+    border: 3px;
+    border-color: @blue;
+    border-radius: 12px;
+    background-color: rgba(30, 30, 46, 0.8);
+}
+
+mainbox {
+    background-color: rgba(30, 30, 46, 0.8);
+}
+
+inputbar {
+    children: [prompt,entry];
+    background-color: @bg-col;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+listview {
+    background-color: transparent;
+}
+
+element {
+    background-color: transparent;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+element-icon {
+    size: 25px;
+    padding: 0 10px 0 0;
+}
+
+element selected {
+    background-color: @blue;
+    text-color: @bg-col;
+}
