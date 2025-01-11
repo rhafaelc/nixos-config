@@ -1,14 +1,11 @@
-{ 
-  pkgs, 
-  ... 
-}: {
+{ pkgs, variables, ... }: {
   home.packages = [pkgs.gh];
 
   programs.gh.enable = true;
   programs.git = {
     enable = true;
-    userName = "Rhafael Chandra";
-    userEmail = "rhafaelchandra@gmail.com";
+    userName = variables.fullName;
+    userEmail = variables.email;
     lfs.enable = true;
     extraConfig = {
       init.defaultBranch = "main";
