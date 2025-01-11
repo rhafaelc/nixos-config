@@ -14,7 +14,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    nvf.url = "github:notashelf/nvf";
+    neovim.url = "github:rhafaelc/neovim";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
@@ -25,7 +25,6 @@
           ./hosts/default/configuration.nix
           inputs.stylix.nixosModules.stylix
           inputs.catppuccin.nixosModules.catppuccin
-          inputs.nvf.nixosModules.default
         ];
       }; 
       workmachine = nixpkgs.lib.nixosSystem {
