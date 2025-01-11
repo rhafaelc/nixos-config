@@ -6,5 +6,6 @@
     ./zen-browser
     ./vesktop
     ./fastfetch
+    ./neovim
   ];
 }
