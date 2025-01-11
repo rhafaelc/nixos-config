@@ -82,6 +82,7 @@ tooltip label {
 #pulseaudio,
 #network,
 #battery,
+#custom-notifications,
 #custom-powermenu {
   padding-left: 10px;
   padding-right: 10px;
@@ -148,4 +149,21 @@ tooltip label {
 #tray {
   padding-right: 8px;
   padding-left: 10px;
+}
+
+#custom-notifications {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 15px;
+    padding: 0 10px;
+    color: @mauve;
+    margin: 3px 0px;
+    border-radius: 8px;
+}
+
+#custom-notifications.dnd {
+    color: @red;
+}
+
+#custom-notifications.none {
+    color: @green;
 }

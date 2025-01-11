@@ -1,0 +1,47 @@
+@import "mocha.css";
+
+.notification-row {
+  outline: none;
+  margin: 10px;
+  padding: 0;
+}
+
+.notification-row:focus,
+.notification-row:hover {
+  background: @surface0;
+}
+
+.notification {
+  margin: 6px;
+  padding: 0;
+  border-radius: 8px;
+  background: @base;
+  border: 2px solid @mauve;
+}
+
+.notification-content {
+  background: transparent;
+  padding: 6px;
+  spacing: 6px;
+}
+
+.close-button {
+  background: @red;
+  color: @base;
+  text-shadow: none;
+  padding: 0;
+  border-radius: 100%;
+  margin-top: 10px;
+  margin-right: 10px;
+  box-shadow: none;
+  border: none;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+.close-button:hover {
+  box-shadow: none;
+  background: @maroon;
+  transition: all 0.15s ease-in-out;
+  border: none;
+}

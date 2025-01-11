@@ -9,13 +9,14 @@
   ],
   "modules-center": ["custom/playerctl"],
   "modules-right": [
+    "tray",
     "cpu",
     "temperature", 
     "memory",
     "pulseaudio",
     "network",
     "idle_inhibitor",
-    "tray",
+    "custom/notifications",
     "battery",
     "clock",
     "custom/powermenu"
@@ -28,6 +29,8 @@
       "default": "",
     },
   },
+
+  
   "clock": {
     "interval": 60,
     "align": 0,
@@ -109,7 +112,7 @@
             " "
         ]
     },
-    "on-click": "pwvucontrol"
+    "on-click": "pwvucontrol",
   },
   "temperature": {
     "format": "\uf2c9 {temperatureC}\u00b0C",
@@ -139,5 +142,20 @@
     "format-alt": "{icon} {time}",
     "format-full": " {capacity}%",
     "format-icons": [" ", " ", " ", " ", " "],
+  },
+  "custom/notifications": {
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂚",
+      "dnd-notification": "󰂛",
+      "dnd-none": "󰂛"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "sleep 0.1 && swaync-client -op -sw",
+    "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+    "escape": true
   },
 }
