@@ -9,4 +9,14 @@
     ../../modules/home-manager/shells
     ../../modules/home-manager/hyprland
   ];
+
+  # Place Files Inside Home Directory
+  home.file."Pictures/Wallpapers" = {
+    source = ../../modules/home-manager/wallpapers;
+    recursive = true;
+  };
+  home.file.".config/wlogout/icons" = {
+    source = ../../modules/home-manager/hyprland/wlogout/icons;
+    recursive = true;
+  };
 }

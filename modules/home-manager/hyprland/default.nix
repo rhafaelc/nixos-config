@@ -1,10 +1,8 @@
 {
   imports = [
     ./hypr
-    ./background.nix
+
     ./btop
-
-
     ./rofi
     ./waybar
     ./hyprshot
