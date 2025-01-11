@@ -11,7 +11,6 @@
 
     ./wlogout
     ./scripts/clipboard-history.nix
-    ./scripts/grimblast.nix
     ./satty
   ];
 }
