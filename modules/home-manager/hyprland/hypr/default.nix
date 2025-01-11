@@ -4,15 +4,43 @@
   config,
   ... 
 } : {
-  home.packages = [
-    pkgs.font-awesome
-    pkgs.nerd-fonts.jetbrains-mono
-    pkgs.pwvucontrol
-    pkgs.playerctl
-    pkgs.brightnessctl
-    pkgs.wl-clipboard
-  ];
+  home.packages = with pkgs; [
+    # Theme-related
+    font-awesome
+    nerd-fonts.jetbrains-mono
+    
+    # Audio
+    pamixer        # CLI audio control
+    playerctl      # Media player control
+    
+    # Screenshots/Recording
+    grim          # Screenshot tool
+    slurp         # Screen area selection
+    wf-recorder   # Screen recording
+    jq            # JSON processor
+    
+    # System
+    wlsunset      # Night light
+    waybar        # Status bar
+    rofi-wayland  # Application launcher
+    
+    # Utils
+    wl-clipboard  # Clipboard
+    cliphist      # Clipboard history
+    
+    # System monitoring
+    btop          # Resource monitor
+    
+    # File management
+    xfce.thunar   # File manager (lighter than nautilus)
+    
+    # Notifications
+    libnotify     # Notification library
+    dunst         # Notification daemon
+    imv  # Add this line
 
+    satty
+  ];
 
   xdg.configFile = {
     "hypr/mocha.conf".source = ./mocha.conf;
@@ -38,18 +66,23 @@
 
 
       "$terminal" = "kitty";
-      "$fileManager" = "nautilus";
+      "$fileManager" = "thunar";
       "$menu" = "rofi -show drun";
 
 
       exec-once = [
-        "waybar & swaync"
+        "waybar"
+        "swaync"
+        "mkdir -p ~/.cache/cliphist"
+        "echo 'max_elements = 100' > ~/.cache/cliphist/config"  # Limit to 100 entries
+        "wl-paste --type text --watch cliphist store"    # Store text clips
+        "wl-paste --type image --watch cliphist store"   # Store image clips
       #   "$terminal"
       #   "nm-applet &"
       #   "waybar & hyprpaper & firefox"
       ];
 
-      env = [
+      env = lib.mkForce [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
       ];
@@ -61,8 +94,8 @@
         border_size = 2;
 
         # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-        "col.active_border" = lib.mkDefault "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = lib.mkDefault "rgba(595959aa)";
+        "col.active_border" = lib.mkForce "rgb(${config.stylix.base16Scheme.base0D})";
+        "col.inactive_border" = lib.mkForce "rgb(${config.stylix.base16Scheme.base02})";
 
         # Set to true enable resizing windows by clicking and dragging on borders and gaps
         resize_on_border = false;
@@ -74,11 +107,11 @@
       };
 
       decoration = {
-        rounding = 10;
+        rounding = 8;
 
         # Change transparency of focused and unfocused windows
-        active_opacity = 1.0;
-        inactive_opacity = 1.0;
+        active_opacity = 0.95;
+        inactive_opacity = 0.85;
 
         shadow = {
             enabled = true;
@@ -90,10 +123,10 @@
         # https://wiki.hyprland.org/Configuring/Variables/#blur
         blur = {
             enabled = true;
-            size = 3;
-            passes = 1;
-
-            vibrancy = 0.1696;
+            size = 5;
+            passes = 3;
+            new_optimizations = true;
+            ignore_opacity = true;
         };
       };
 
@@ -179,13 +212,10 @@
         "$mainMod, C, killactive,"
         "$mainMod, M, exit,"
         "$mainMod, E, exec, $fileManager"
-        "$mainMod, V, togglefloating,"
+        "$mainMod SHIFT, F, togglefloating,"
         "$mainMod, R, exec, $menu"
         # "$mainMod, P, pseudo," # dwindle
         # "$mainMod, J, togglesplit," # dwindle
-
-        ", PRINT, exec, hyprshot -m window"
-	      "$mainMod SHIFT, S, exec, hyprshot -m region --clipboard-only"
 
         "$mainMod SHIFT, L, exec, hyprlock"
 
@@ -229,6 +259,11 @@
         "$mainMod CTRL_L, right, workspace, e+1"
         "$mainMod CTRL_L, left, workspace, e-1"
        
+        "$mainMod, V, exec, clipboard-history show"
+
+        # Screenshot bindings
+        "$mainMod SHIFT, S, exec, grim -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
+        ", Print, exec, grim -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
       ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging
