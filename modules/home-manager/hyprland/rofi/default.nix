@@ -1,14 +1,30 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
 {
   programs.rofi = {
-    enable = false;
+    enable = true;
+    package = pkgs.rofi-wayland;
+    
+    # Main configuration
+    terminal = "kitty";
+    location = "center";
+    
+    # Theme configuration
+    theme = lib.mkForce "catppuccin-mocha";
+    
+    extraConfig = {
+      modi = "drun";
+      show-icons = true;
+      drun-display-format = "{icon} {name}";
+      disable-history = false;
+      hide-scrollbar = true;
+      display-drun = "   Apps ";
+      sidebar-mode = false;
+    };
   };
 
-  home.packages = [ pkgs.rofi-wayland ];
-
+  # Only include theme files, not the main config
   xdg.configFile = {
-    "rofi/config.rasi".source = ./config.rasi;
     "rofi/themes/catppuccin-mocha.rasi".source = ./themes/catppuccin-mocha.rasi;
     "rofi/themes/launcher.rasi".source = ./themes/launcher.rasi;
     "rofi/themes/clipboard.rasi".source = ./themes/clipboard.rasi;

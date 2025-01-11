@@ -18,28 +18,17 @@
     slurp         # Screen area selection
     wf-recorder   # Screen recording
     jq            # JSON processor
-    
-    # System
-    wlsunset      # Night light
-    waybar        # Status bar
-    rofi-wayland  # Application launcher
+    satty         # Screenshot annotation tool
     
     # Utils
     wl-clipboard  # Clipboard
     cliphist      # Clipboard history
     
-    # System monitoring
-    btop          # Resource monitor
-    
     # File management
-    xfce.thunar   # File manager (lighter than nautilus)
+    xfce.thunar   # File manager
     
-    # Notifications
-    libnotify     # Notification library
-    dunst         # Notification daemon
-    imv  # Add this line
-
-    satty
+    # Image viewing
+    imv           # Image viewer
   ];
 
   xdg.configFile = {
