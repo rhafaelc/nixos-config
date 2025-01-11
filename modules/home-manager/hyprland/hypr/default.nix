@@ -10,14 +10,12 @@
     nerd-fonts.jetbrains-mono
     
     # Audio
-    pamixer        # CLI audio control
     playerctl      # Media player control
+    pwvucontrol
     
     # Screenshots/Recording
     grim          # Screenshot tool
     slurp         # Screen area selection
-    wf-recorder   # Screen recording
-    jq            # JSON processor
     satty         # Screenshot annotation tool
     
     # Utils
@@ -28,7 +26,7 @@
     xfce.thunar   # File manager
     
     # Image viewing
-    imv           # Image viewer
+    qimgv           # Image viewer
   ];
 
   xdg.configFile = {
