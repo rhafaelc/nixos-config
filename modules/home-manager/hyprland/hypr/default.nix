@@ -291,12 +291,8 @@
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
 
-        "$mainMod, Space, togglespecialworkspace, magic"
-        "$mainMod SHIFT, Space, movetoworkspace, special:magic"
-
-        "ALT, Tab, cyclenext"
-        "ALT, Tab, bringactivetotop"
-        "ALT SHIFT, Tab, cyclenext, prev"
+        "ALT, TAB, togglespecialworkspace, magic"
+        "$mainMod SHIFT, TAB, movetoworkspace, special:magic"
 
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
