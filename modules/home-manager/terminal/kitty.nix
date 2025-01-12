@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   ...
 }:
 ###########################################################
@@ -28,8 +27,6 @@
     settings = {
       cursor_trail = 3;
       shell = "zsh";
-      background_opacity = lib.mkForce "0.85";
-      background_blur = 1;
       window_padding_width = 4;
     };
   };

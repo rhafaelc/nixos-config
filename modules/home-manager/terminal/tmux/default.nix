@@ -1,11 +1,22 @@
 { pkgs, ... }:
 {
+  xdg.configFile = {
+    "tmux/plugins/catppuccin/tmux".source = ./plugins/catppuccin/tmux;
+  };
+
   programs.tmux = {
     enable = true;
     shell = "${pkgs.zsh}/bin/zsh";
     keyMode = "vi";
     prefix = "C-s";
-    mouse = true; 
+    mouse = true;
+    terminal = "tmux-256color";
+    extraConfig = ''
+      set-option -g status-position top
+      run ~/.config/tmux/plugins/catppuccin/tmux/catppuccin.tmux
+    '';
+
+
     plugins = with pkgs; [
       {
         plugin = tmuxPlugins.vim-tmux-navigator;
@@ -15,9 +26,11 @@
       {
         plugin = tmuxPlugins.catppuccin;
         extraConfig = ''
-          set-option -g status-position top
+          set -g @catppuccin_flavor "mocha"
+
           set -g @catppuccin_window_left_separator ""
           set -g @catppuccin_window_right_separator " "
+
           set -g @catppuccin_window_middle_separator " █"
           set -g @catppuccin_window_number_position "right"
 
@@ -27,10 +40,9 @@
           set -g @catppuccin_window_current_fill "number"
           set -g @catppuccin_window_current_text "#W"
 
-          set -g @catppuccin_status_modules_right "directory session"
+          set -g @catppuccin_status_modules_right "directory host session"
           set -g @catppuccin_status_left_separator  " "
           set -g @catppuccin_status_right_separator ""
-          set -g @catppuccin_status_right_separator_inverse "no"
           set -g @catppuccin_status_fill "icon"
           set -g @catppuccin_status_connect_separator "no"
 
