@@ -38,9 +38,12 @@
 
     settings = {
       misc = {
+        vrr = 0;
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
+        force_default_wallpaper = 0;
         disable_hyprland_qtutils_check = true;
       };
-
 
       monitor= [
         ",1920x1080, auto, 1, bitdepth, 8"
@@ -51,11 +54,9 @@
         force_zero_scaling = true;
       };
 
-
       "$terminal" = "kitty";
       "$fileManager" = "thunar";
       "$menu" = "rofi -show drun";
-
 
       exec-once = [
         "waybar"
@@ -96,10 +97,6 @@
       decoration = {
         rounding = 8;
 
-        # Change transparency of focused and unfocused windows
-        active_opacity = 0.95;
-        inactive_opacity = 0.85;
-
         shadow = {
             enabled = true;
             range = 4;
@@ -107,7 +104,6 @@
             color = lib.mkDefault "rgba(1a1a1aee)";
         };
 
-        # https://wiki.hyprland.org/Configuring/Variables/#blur
         blur = {
             enabled = true;
             size = 5;
@@ -116,6 +112,58 @@
             ignore_opacity = true;
         };
       };
+
+      windowrulev2 = [
+        # Browsers
+        "opacity 0.90 0.90,class:^(firefox)$"
+        "opacity 0.90 0.90,class:^(Google-chrome)$"
+        "opacity 0.90 0.90,class:^(Brave-browser)$"
+        
+        # Development
+        "opacity 0.80 0.80,class:^([Cc]ode)$"
+        "opacity 0.80 0.80,class:^(code-url-handler)$"
+        
+        # Terminal
+        "opacity 0.80 0.80,class:^(kitty)$"
+        
+        # File managers
+        "opacity 0.80 0.80,class:^(thunar)$"
+        
+        # System
+        "opacity 0.80 0.70,class:^(pavucontrol)$"
+        "opacity 0.80 0.70,class:^(blueman-manager)$"
+        "opacity 0.80 0.70,class:^(nm-connection-editor)$"
+        
+        # Authentication
+        "opacity 0.80 0.70,class:^(polkit-gnome-authentication-agent-1)$"
+        
+        # Media
+        "opacity 0.70 0.70,class:^([Ss]potify)$"
+        
+        # Floating windows
+        "float,title:^(Open)$"
+        "float,title:^(Choose Files)$"
+        "float,title:^(Save As)$"
+        "float,title:^(File Operation Progress)$"
+        "float,class:^(pavucontrol)$"
+        "float,class:^(blueman-manager)$"
+        "float,class:^(nm-connection-editor)$"
+        
+        # Fix some XWayland apps
+        "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+      ];
+
+      layerrule = [
+        "blur,rofi"
+        "ignorezero,rofi"
+        "blur,notifications"
+        "ignorezero,notifications"
+        "blur,swaync-notification-window"
+        "ignorezero,swaync-notification-window"
+        "blur,swaync-control-center"
+        "ignorezero,swaync-control-center"
+        "blur,logout_dialog"
+      ];
 
     animations = {
       enabled = true;
@@ -178,7 +226,7 @@
 
         touchpad = {
             natural_scroll = true;
-            scroll_factor = 0.2;
+            scroll_factor = 0.3;
         };
       };
 
@@ -195,23 +243,32 @@
       "$mainMod" = "SUPER"; # Sets "Windows" key as main modifier
     
       bind = [
-        "$mainMod, Q, exec, $terminal"
-        "$mainMod, C, killactive,"
-        "$mainMod, M, exit,"
+        "$mainMod, Return, exec, $terminal"
+        
+        "$mainMod, Q, killactive,"
+        "ALT, F4, killactive,"
+        "$mainMod SHIFT, DELETE, exit,"
         "$mainMod, E, exec, $fileManager"
+        "$mainMod, F, fullscreen,"
         "$mainMod SHIFT, F, togglefloating,"
         "$mainMod, R, exec, $menu"
-        # "$mainMod, P, pseudo," # dwindle
-        # "$mainMod, J, togglesplit," # dwindle
-
-        "$mainMod SHIFT, L, exec, hyprlock"
+        "$mainMod, DELETE, exec, hyprlock"
 
         "$mainMod, h, movefocus, l"
-        "$mainMod, j, movefocus, d"
-        "$mainMod, k, movefocus, u"
         "$mainMod, l, movefocus, r"
+        "$mainMod, k, movefocus, u"
+        "$mainMod, j, movefocus, d"
 
-        # Switch workspaces with mainMod + [0-9]
+        "$mainMod SHIFT, h, movewindow, l"
+        "$mainMod SHIFT, l, movewindow, r"
+        "$mainMod SHIFT, k, movewindow, u"
+        "$mainMod SHIFT, j, movewindow, d"
+
+        "$mainMod CTRL, h, resizeactive, -20 0"
+        "$mainMod CTRL, l, resizeactive, 20 0"
+        "$mainMod CTRL, k, resizeactive, 0 -20"
+        "$mainMod CTRL, j, resizeactive, 0 20"
+
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
         "$mainMod, 3, workspace, 3"
@@ -223,7 +280,6 @@
         "$mainMod, 9, workspace, 9"
         "$mainMod, 0, workspace, 10"
 
-        # Move active window to a workspace with mainMod + SHIFT + [0-9]
         "$mainMod SHIFT, 1, movetoworkspace, 1"
         "$mainMod SHIFT, 2, movetoworkspace, 2"
         "$mainMod SHIFT, 3, movetoworkspace, 3"
@@ -235,32 +291,30 @@
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
 
+        "$mainMod, Space, togglespecialworkspace, magic"
+        "$mainMod SHIFT, Space, movetoworkspace, special:magic"
 
-        # Example special workspace (scratchpad)
-        "ALT, TAB, togglespecialworkspace, magic"
-        "ALT SHIFT, TAB, movetoworkspace, special:magic"
+        "ALT, Tab, cyclenext"
+        "ALT, Tab, bringactivetotop"
+        "ALT SHIFT, Tab, cyclenext, prev"
 
-        # Scroll through existing workspaces with mainMod + scroll
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
-        "$mainMod CTRL_L, right, workspace, e+1"
-        "$mainMod CTRL_L, left, workspace, e-1"
-       
+        "$mainMod CTRL, right, workspace, e+1"
+        "$mainMod CTRL, left, workspace, e-1"
+
         "$mainMod, V, exec, clipboard-history show"
 
-        # Screenshot bindings
         "$mainMod SHIFT, S, exec, grim -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
-        ", Print, exec, grim -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
+        "$mainMod, Print, exec, grim -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
       ];
 
-      # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = [
         "$mainMod, mouse:272, movewindow"
-        "$mainMod CTRL_L, mouse:272, resizewindow"
+        "$mainMod, mouse:273, resizewindow"
+        "$mainMod CTRL, mouse:272, resizewindow"
       ];
 
-
-      # Laptop multimedia keys for volume and LCD brightness
       bindel = [
         ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
         ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
@@ -270,16 +324,12 @@
         ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
       ];
 
-      # Requires playerctl
       bindl = [
         ", XF86AudioNext, exec, playerctl next"
         ", XF86AudioPause, exec, playerctl play-pause"
         ", XF86AudioPlay, exec, playerctl play-pause"
         ", XF86AudioPrev, exec, playerctl previous"
       ];
-
-      # Fix some dragging issues with XWayland
-      windowrulev2 = "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0";
     };
   };
 }
