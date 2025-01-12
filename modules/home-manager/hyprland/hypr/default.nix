@@ -12,6 +12,9 @@
     # Audio
     playerctl      # Media player control
     pwvucontrol
+
+    # Brightness
+    brightnessctl
     
     # Screenshots/Recording
     grim          # Screenshot tool
