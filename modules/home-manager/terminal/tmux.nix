@@ -9,6 +9,7 @@
     terminal = "tmux-256color";
     extraConfig = ''
       set-option -g status-position top
+      set -sg escape-time 10
     '';
 
 

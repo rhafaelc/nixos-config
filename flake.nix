@@ -14,7 +14,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    neovim.url = "github:rhafaelc/neovim";
+    neovim.url = "github:rhafaelc/nixvim";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
