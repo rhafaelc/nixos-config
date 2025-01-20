@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.tmux = {
     enable = true;
     shell = "${pkgs.zsh}/bin/zsh";
@@ -10,8 +9,9 @@
     extraConfig = ''
       set-option -g status-position top
       set -sg escape-time 10
+      set -g base-index 1
+      setw -g pane-base-index 1
     '';
-
 
     plugins = with pkgs; [
       {
@@ -23,7 +23,7 @@
         plugin = tmuxPlugins.catppuccin;
         extraConfig = ''
           set -g @catppuccin_flavor "mocha"
-          
+
           set -g @catppuccin_window_status_style "basic"
           set -ogq @catppuccin_window_default_text " #W"
           set -ogq @catppuccin_window_current_text " #W"
