@@ -1,35 +1,35 @@
-{ 
-  pkgs, 
-  lib, 
+{
+  pkgs,
+  lib,
   config,
-  ... 
-} : {
+  ...
+}: {
   home.packages = with pkgs; [
     # Theme-related
     font-awesome
     nerd-fonts.jetbrains-mono
-    
+
     # Audio
-    playerctl      # Media player control
+    playerctl # Media player control
     pwvucontrol
 
     # Brightness
     brightnessctl
-    
+
     # Screenshots/Recording
-    grim          # Screenshot tool
-    slurp         # Screen area selection
-    satty         # Screenshot annotation tool
-    
+    grim # Screenshot tool
+    slurp # Screen area selection
+    satty # Screenshot annotation tool
+
     # Utils
-    wl-clipboard  # Clipboard
-    cliphist      # Clipboard history
-    
+    wl-clipboard # Clipboard
+    cliphist # Clipboard history
+
     # File management
-    xfce.thunar   # File manager
-    
+    xfce.thunar # File manager
+
     # Image viewing
-    qimgv           # Image viewer
+    qimgv # Image viewer
   ];
 
   xdg.configFile = {
@@ -48,7 +48,7 @@
         disable_hyprland_qtutils_check = true;
       };
 
-      monitor= [
+      monitor = [
         ",1920x1080, auto, 1, bitdepth, 8"
         ",preferred,auto,1,mirror,eDP-1,bitdepth,8"
       ];
@@ -57,7 +57,7 @@
         force_zero_scaling = true;
       };
 
-      "$terminal" = "kitty";
+      "$terminal" = "ghostty";
       "$fileManager" = "thunar";
       "$menu" = "rofi -show drun";
 
@@ -65,12 +65,12 @@
         "waybar"
         "swaync"
         "mkdir -p ~/.cache/cliphist"
-        "echo 'max_elements = 100' > ~/.cache/cliphist/config"  # Limit to 100 entries
-        "wl-paste --type text --watch cliphist store"    # Store text clips
-        "wl-paste --type image --watch cliphist store"   # Store image clips
-      #   "$terminal"
-      #   "nm-applet &"
-      #   "waybar & hyprpaper & firefox"
+        "echo 'max_elements = 100' > ~/.cache/cliphist/config" # Limit to 100 entries
+        "wl-paste --type text --watch cliphist store" # Store text clips
+        "wl-paste --type image --watch cliphist store" # Store image clips
+        #   "$terminal"
+        #   "nm-applet &"
+        #   "waybar & hyprpaper & firefox"
       ];
 
       env = lib.mkForce [
@@ -101,18 +101,19 @@
         rounding = 8;
 
         shadow = {
-            enabled = true;
-            range = 4;
-            render_power = 3;
-            color = lib.mkDefault "rgba(1a1a1aee)";
+          enabled = true;
+          range = 4;
+          render_power = 3;
+          color = lib.mkDefault "rgba(1a1a1aee)";
         };
 
         blur = {
-            enabled = true;
-            size = 5;
-            passes = 3;
-            new_optimizations = true;
-            ignore_opacity = true;
+          enabled = true;
+          size = 5;
+          passes = 3;
+          new_optimizations = true;
+          ignore_opacity = true;
+          vibrancy = 0.1696;
         };
       };
 
@@ -121,28 +122,29 @@
         "opacity 0.90 0.90,class:^(firefox)$"
         "opacity 0.90 0.90,class:^(Google-chrome)$"
         "opacity 0.90 0.90,class:^(Brave-browser)$"
-        
+
         # Development
         "opacity 0.80 0.80,class:^([Cc]ode)$"
         "opacity 0.80 0.80,class:^(code-url-handler)$"
-        
+
         # Terminal
+        "opacity 0.80 0.80,class:^(com.mitchellh.ghostty)$"
         "opacity 0.80 0.80,class:^(kitty)$"
-        
+
         # File managers
         "opacity 0.80 0.80,class:^(thunar)$"
-        
+
         # System
         "opacity 0.80 0.70,class:^(pavucontrol)$"
         "opacity 0.80 0.70,class:^(blueman-manager)$"
         "opacity 0.80 0.70,class:^(nm-connection-editor)$"
-        
+
         # Authentication
         "opacity 0.80 0.70,class:^(polkit-gnome-authentication-agent-1)$"
-        
+
         # Media
         "opacity 0.70 0.70,class:^([Ss]potify)$"
-        
+
         # Floating windows
         "float,title:^(Open)$"
         "float,title:^(Choose Files)$"
@@ -151,7 +153,7 @@
         "float,class:^(pavucontrol)$"
         "float,class:^(blueman-manager)$"
         "float,class:^(nm-connection-editor)$"
-        
+
         # Fix some XWayland apps
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
       ];
@@ -168,44 +170,44 @@
         "blur,logout_dialog"
       ];
 
-    animations = {
-      enabled = true;
-      bezier = [
-        "wind, 0.05, 0.85, 0.03, 0.97"
-        "winIn, 0.07, 0.88, 0.04, 0.99"
-        "winOut, 0.20, -0.15, 0, 1"
-        "liner, 1, 1, 1, 1"
-        "md3_standard, 0.12, 0, 0, 1"
-        "md3_decel, 0.05, 0.80, 0.10, 0.97"
-        "md3_accel, 0.20, 0, 0.80, 0.08"
-        "overshot, 0.05, 0.85, 0.07, 1.04"
-        "crazyshot, 0.1, 1.22, 0.68, 0.98"
-        "hyprnostretch, 0.05, 0.82, 0.03, 0.94"
-        "menu_decel, 0.05, 0.82, 0, 1"
-        "menu_accel, 0.20, 0, 0.82, 0.10"
-        "easeInOutCirc, 0.75, 0, 0.15, 1"
-        "easeOutCirc, 0, 0.48, 0.38, 1"
-        "easeOutExpo, 0.10, 0.94, 0.23, 0.98"
-        "softAcDecel, 0.20, 0.20, 0.15, 1"
-        "md2, 0.30, 0, 0.15, 1"
-        "OutBack, 0.28, 1.40, 0.58, 1"
-        "easeInOutCirc, 0.78, 0, 0.15, 1"
-      ];
-      animation = [
-        "border, 1, 1.6, liner"
-        "borderangle, 1, 82, liner, loop"
-        "windowsIn, 1, 3.2, winIn, slide"
-        "windowsOut, 1, 2.8, easeOutCirc"
-        "windowsMove, 1, 3.0, wind, slide"
-        "fade, 1, 1.8, md3_decel"
-        "layersIn, 1, 1.8, menu_decel, slide"
-        "layersOut, 1, 1.5, menu_accel"
-        "fadeLayersIn, 1, 1.6, menu_decel"
-        "fadeLayersOut, 1, 1.8, menu_accel"
-        "workspaces, 1, 4.0, menu_decel, slide"
-        "specialWorkspace, 1, 2.3, md3_decel, slidefadevert 15%"
-      ];
-    };
+      animations = {
+        enabled = true;
+        bezier = [
+          "wind, 0.05, 0.85, 0.03, 0.97"
+          "winIn, 0.07, 0.88, 0.04, 0.99"
+          "winOut, 0.20, -0.15, 0, 1"
+          "liner, 1, 1, 1, 1"
+          "md3_standard, 0.12, 0, 0, 1"
+          "md3_decel, 0.05, 0.80, 0.10, 0.97"
+          "md3_accel, 0.20, 0, 0.80, 0.08"
+          "overshot, 0.05, 0.85, 0.07, 1.04"
+          "crazyshot, 0.1, 1.22, 0.68, 0.98"
+          "hyprnostretch, 0.05, 0.82, 0.03, 0.94"
+          "menu_decel, 0.05, 0.82, 0, 1"
+          "menu_accel, 0.20, 0, 0.82, 0.10"
+          "easeInOutCirc, 0.75, 0, 0.15, 1"
+          "easeOutCirc, 0, 0.48, 0.38, 1"
+          "easeOutExpo, 0.10, 0.94, 0.23, 0.98"
+          "softAcDecel, 0.20, 0.20, 0.15, 1"
+          "md2, 0.30, 0, 0.15, 1"
+          "OutBack, 0.28, 1.40, 0.58, 1"
+          "easeInOutCirc, 0.78, 0, 0.15, 1"
+        ];
+        animation = [
+          "border, 1, 1.6, liner"
+          "borderangle, 1, 82, liner, loop"
+          "windowsIn, 1, 3.2, winIn, slide"
+          "windowsOut, 1, 2.8, easeOutCirc"
+          "windowsMove, 1, 3.0, wind, slide"
+          "fade, 1, 1.8, md3_decel"
+          "layersIn, 1, 1.8, menu_decel, slide"
+          "layersOut, 1, 1.5, menu_accel"
+          "fadeLayersIn, 1, 1.6, menu_decel"
+          "fadeLayersOut, 1, 1.8, menu_accel"
+          "workspaces, 1, 4.0, menu_decel, slide"
+          "specialWorkspace, 1, 2.3, md3_decel, slidefadevert 15%"
+        ];
+      };
 
       dwindle = {
         pseudotile = true; # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
@@ -228,8 +230,8 @@
         sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
 
         touchpad = {
-            natural_scroll = true;
-            scroll_factor = 0.3;
+          natural_scroll = true;
+          scroll_factor = 0.3;
         };
       };
 
@@ -237,17 +239,16 @@
         workspace_swipe = true;
       };
 
-
       device = {
         name = "epic-mouse-v1";
         sensitivity = -0.5;
       };
 
       "$mainMod" = "SUPER"; # Sets "Windows" key as main modifier
-    
+
       bind = [
         "$mainMod, Return, exec, $terminal"
-        
+
         "$mainMod, Q, killactive,"
         "ALT, F4, killactive,"
         "$mainMod SHIFT, DELETE, exit,"

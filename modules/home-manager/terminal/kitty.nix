@@ -22,7 +22,7 @@
 
     shellIntegration.enableZshIntegration = true;
 
-    font.name = lib.mkForce "JetBrainsMono Nerd Font";
+    font.name = lib.mkForce "JetBrainsMonoNL Nerd Font";
 
     settings = {
       cursor_trail = 3;

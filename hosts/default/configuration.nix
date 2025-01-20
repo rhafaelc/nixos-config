@@ -71,7 +71,10 @@
     description = variables.fullName;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
+    shell = pkgs.zsh; 
   };
+
+  programs.zsh.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;
