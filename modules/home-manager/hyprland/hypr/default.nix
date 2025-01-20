@@ -122,6 +122,7 @@
         "opacity 0.90 0.90,class:^(firefox)$"
         "opacity 0.90 0.90,class:^(Google-chrome)$"
         "opacity 0.90 0.90,class:^(Brave-browser)$"
+        "opacity 0.90 0.90,class:^(zen)$"
 
         # Development
         "opacity 0.80 0.80,class:^([Cc]ode)$"
@@ -135,7 +136,7 @@
         "opacity 0.80 0.80,class:^(thunar)$"
 
         # System
-        "opacity 0.80 0.70,class:^(pavucontrol)$"
+        "opacity 0.80 0.70,class:^(com.saivert.pwvucontrol)$"
         "opacity 0.80 0.70,class:^(blueman-manager)$"
         "opacity 0.80 0.70,class:^(nm-connection-editor)$"
 
@@ -143,7 +144,8 @@
         "opacity 0.80 0.70,class:^(polkit-gnome-authentication-agent-1)$"
 
         # Media
-        "opacity 0.70 0.70,class:^([Ss]potify)$"
+        "opacity 0.80 0.70,class:^([Ss]potify)$"
+        "opacity 0.80 0.70,class:^(vesktop)$"
 
         # Floating windows
         "float,title:^(Open)$"
