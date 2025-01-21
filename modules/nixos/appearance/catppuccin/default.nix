@@ -1,5 +1,5 @@
-{ ... }:{
- catppuccin = {
+{...}: {
+  catppuccin = {
     flavor = "mocha";
     enable = true;
   };

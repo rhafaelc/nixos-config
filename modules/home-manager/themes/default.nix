@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   qt = {
     enable = true;
     platformTheme = {
@@ -9,4 +13,11 @@
       package = pkgs.adwaita-qt;
     };
   };
-} 
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name = "Papirus Dark";
+      package = pkgs.papirus-icon-theme; 
+    };
+  };
+}
