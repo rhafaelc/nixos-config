@@ -6,7 +6,7 @@
     package = pkgs.rofi-wayland;
     
     # Main configuration
-    terminal = "kitty";
+    terminal = "ghostty";
     location = "center";
     
     # Theme configuration
