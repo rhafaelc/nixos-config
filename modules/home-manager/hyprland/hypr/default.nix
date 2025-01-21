@@ -72,10 +72,10 @@
         #   "nm-applet &"
         #   "waybar & hyprpaper & firefox"
         "[workspace 1 silent] ghostty"
-        "[workspace 1 silent] zen"
+        "[workspace 2 silent] zen"
         "[workspace 3 silent] vesktop"
         "[workspace 4 silent] spotify"
-        "hyprswitch init --show-title &"
+        "hyprswitch init --show-title --size-factor 4.5 --workspaces-per-row 6 &"
       ];
 
       env = lib.mkForce [
@@ -302,7 +302,7 @@
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
 
-        "ALT, Space, togglespecialworkspace, magic"
+        "$mainMod, Space, togglespecialworkspace, magic"
         "$mainMod SHIFT, Space, movetoworkspace, special:magic"
 
         "$mainMod, mouse_down, workspace, e+1"
