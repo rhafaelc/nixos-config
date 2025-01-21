@@ -71,6 +71,11 @@
         #   "$terminal"
         #   "nm-applet &"
         #   "waybar & hyprpaper & firefox"
+        "[workspace 1 silent] ghostty"
+        "[workspace 1 silent] zen"
+        "[workspace 3 silent] vesktop"
+        "[workspace 4 silent] spotify"
+        "hyprswitch init --show-title &"
       ];
 
       env = lib.mkForce [
@@ -297,8 +302,8 @@
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
 
-        "ALT, TAB, togglespecialworkspace, magic"
-        "$mainMod SHIFT, TAB, movetoworkspace, special:magic"
+        "ALT, Space, togglespecialworkspace, magic"
+        "$mainMod SHIFT, Space, movetoworkspace, special:magic"
 
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
@@ -309,6 +314,9 @@
 
         "$mainMod SHIFT, S, exec, grim -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
         "$mainMod, Print, exec, grim -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
+
+        "alt, tab, exec, hyprswitch gui --mod-key alt --key tab --close mod-key-release --reverse-key=key=grave --sort-recent && hyprswitch dispatch"
+        "alt grave, tab, exec, hyprswitch gui --mod-key alt --key tab --close mod-key-release --reverse-key=key=grave --sort-recent && hyprswitch dispatch -r"
       ];
 
       bindm = [

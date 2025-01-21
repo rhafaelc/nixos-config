@@ -15,6 +15,8 @@
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     neovim.url = "github:rhafaelc/nixvim";
+
+    hyprswitch.url = "github:h3rmt/hyprswitch/release";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
