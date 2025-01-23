@@ -9,5 +9,6 @@
     ./neovim
     ./vlc
     ./jetbrains
+    ./postman
   ];
 }
