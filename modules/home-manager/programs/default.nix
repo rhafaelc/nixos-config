@@ -7,5 +7,6 @@
     ./vesktop
     ./fastfetch
     ./neovim
+    ./vlc
   ];
 }
