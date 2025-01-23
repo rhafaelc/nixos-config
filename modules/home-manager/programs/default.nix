@@ -8,5 +8,6 @@
     ./fastfetch
     ./neovim
     ./vlc
+    ./jetbrains
   ];
 }
