@@ -74,7 +74,7 @@
         "[workspace 1 silent] ghostty"
         "[workspace 2 silent] zen"
         "[workspace 3 silent] vesktop"
-        "[workspace 4 silent] spotify"
+        "[workspace special:music silent] spotify"
         "hyprswitch init --show-title --size-factor 4.5 --workspaces-per-row 6 &"
       ];
 
@@ -132,7 +132,9 @@
         # Development
         "opacity 0.80 0.80,class:^([Cc]ode)$"
         "opacity 0.80 0.80,class:^(code-url-handler)$"
-
+        "opacity 0.80 0.80,class:^(jetbrains-idea-ce)$"
+        "opacity 0.80 0.80,class:^(Postman)$"
+  
         # Terminal
         "opacity 0.80 0.80,class:^(com.mitchellh.ghostty)$"
         "opacity 0.80 0.80,class:^(kitty)$"
@@ -302,8 +304,11 @@
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
 
-        "$mainMod, Space, togglespecialworkspace, magic"
-        "$mainMod SHIFT, Space, movetoworkspace, special:magic"
+        "$mainMod, Space, togglespecialworkspace, music"
+        "$mainMod SHIFT, Space, movetoworkspace, special:music"
+        "$mainMod, n, togglespecialworkspace, etc"
+        "$mainMod SHIFT, n, movetoworkspace, special:etc"
+
 
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
