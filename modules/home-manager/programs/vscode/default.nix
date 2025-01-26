@@ -1,8 +1,8 @@
-{ 
+{
   pkgs,
   lib,
   ...
-}:{
+}: {
   programs.vscode = {
     enable = true;
 
@@ -13,13 +13,26 @@
       github.copilot
       github.copilot-chat
       eamodio.gitlens
+
+      esbenp.prettier-vscode
+      yoavbls.pretty-ts-errors
+      dbaeumer.vscode-eslint
+      wix.vscode-import-cost
+      bradlc.vscode-tailwindcss
     ];
 
     userSettings = {
-      "workbench.iconTheme"= "catppuccin-mocha";
-      "workbench.colorTheme"= lib.mkForce "Catppuccin Mocha";
-      "editor.fontFamily"= lib.mkForce "JetBrainsMono Nerd Font";
-      "terminal.integrated.fontFamily"= lib.mkForce "JetBrainsMono Nerd Font";
+      "workbench.iconTheme" = "catppuccin-mocha";
+      "workbench.colorTheme" = lib.mkForce "Catppuccin Mocha";
+      "editor.fontFamily" = lib.mkForce "JetBrainsMono Nerd Font";
+      "terminal.integrated.fontFamily" = lib.mkForce "JetBrainsMono Nerd Font";
+
+      "prettier.printWidth" = 80;
+      "editor.formatOnSave" = true;
+      "editor.defaultFormatter" = "esbenp.prettier-vscode";
+
+      "explorer.compactFolders" = false;
+      "window.titleBarStyle" = "custom";
     };
   };
 }
