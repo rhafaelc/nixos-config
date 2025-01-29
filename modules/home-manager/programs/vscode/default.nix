@@ -19,6 +19,8 @@
       dbaeumer.vscode-eslint
       wix.vscode-import-cost
       bradlc.vscode-tailwindcss
+
+      wakatime.vscode-wakatime
     ];
 
     userSettings = {

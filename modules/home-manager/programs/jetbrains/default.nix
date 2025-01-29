@@ -9,6 +9,7 @@ let
   pluginList = [
     ideaPlugins."com.github.catppuccin.jetbrains"
     ideaPlugins."com.github.catppuccin.jetbrains_icons"
+    ideaPlugins."com.wakatime.intellij.plugin"
   ];
 in {
   home.packages = [
