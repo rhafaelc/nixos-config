@@ -12,4 +12,7 @@
       safe.directory = ["*"];
     };
   };
+  programs.lazygit = {
+    enable = true;
+  };
 }
