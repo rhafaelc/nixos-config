@@ -10,5 +10,6 @@
     ./vlc
     ./jetbrains
     ./postman
+    ./devbox
   ];
 }
