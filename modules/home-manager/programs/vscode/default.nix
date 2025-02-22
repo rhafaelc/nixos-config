@@ -32,6 +32,9 @@
       "prettier.printWidth" = 80;
       "editor.formatOnSave" = true;
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "editor.bracketPairColorization.enabled" = true;
+      "editor.bracketPairColorization.independentColorPoolPerBracketType" = true;
+      "editor.guides.bracketPairs" = true;
 
       "explorer.compactFolders" = false;
       "window.titleBarStyle" = "custom";
