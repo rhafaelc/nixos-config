@@ -14,6 +14,6 @@ let
 in {
   home.packages = [
     # pkgs.jetbrains.idea-community
-    (pkgs.jetbrains.plugins.addPlugins pkgs.jetbrains."${idea}" pluginList)
+    # (pkgs.jetbrains.plugins.addPlugins pkgs.jetbrains."${idea}" pluginList)
   ];
 }
