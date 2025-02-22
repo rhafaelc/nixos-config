@@ -1,0 +1,46 @@
+{
+  modulesPath,
+  lib,
+  pkgs,
+  variables,
+  ...
+}: {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+    (modulesPath + "/profiles/qemu-guest.nix")
+    ./disk-config.nix
+  ];
+  boot.loader.grub = {
+    # no need to set devices, disko will add all devices that have a EF02 partition to the list already
+    # devices = [ ];
+    efiSupport = true;
+    efiInstallAsRemovable = true;
+  };
+  services.openssh.enable = true;
+
+  environment.systemPackages = map lib.lowPrio [
+    pkgs.curl
+    pkgs.gitMinimal
+    pkgs.neovim
+  ];
+
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  users.users.${variables.username} = {
+    packages = with pkgs; [];
+    shell = pkgs.zsh;
+
+    initialPassword = "nixos";
+    openssh.authorizedKeys.keys = [
+      # change this to your ssh key
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICayZJkcxKfsZqhYRIDOvJ7QLJZG0sQiwKFSKzSbwRob rhafaelc@nixos"
+    ];
+  };
+
+  programs.zsh.enable = true;
+
+  # Docker
+  virtualisation.docker.enable = true;
+
+  system.stateVersion = "24.11";
+}

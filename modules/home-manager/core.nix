@@ -1,7 +1,12 @@
-{ config, variables, ... }: {
+{
+  config,
+  variables,
+  lib,
+  ...
+}: {
   home = {
     username = variables.username;
-    homeDirectory = "/home/${variables.username}";
+    homeDirectory = lib.mkDefault "/home/${variables.username}";
   };
 
   home.stateVersion = "24.11";

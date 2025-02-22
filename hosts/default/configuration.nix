@@ -1,16 +1,18 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, variables, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../modules/nixos/appearance
-      ../../modules/nixos/hyprland
-    ];
+  config,
+  pkgs,
+  variables,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../../modules/nixos/appearance
+    ../../modules/nixos/hyprland
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -69,9 +71,9 @@
   users.users.${variables.username} = {
     isNormalUser = true;
     description = variables.fullName;
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     packages = with pkgs; [];
-    shell = pkgs.zsh; 
+    shell = pkgs.zsh;
   };
 
   programs.zsh.enable = true;
@@ -101,7 +103,17 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    ports = [22];
+    settings = {
+      PasswordAuthentication = true;
+      AllowUsers = null; # Allows all users by default. Can be [ "user1" "user2" ]
+      UseDns = true;
+      X11Forwarding = false;
+      PermitRootLogin = "prohibit-password"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+    };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
