@@ -71,7 +71,11 @@
   users.users.${variables.username} = {
     isNormalUser = true;
     description = variables.fullName;
-    extraGroups = ["networkmanager" "wheel" "docker"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      # "docker"
+    ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
@@ -82,7 +86,7 @@
   programs.firefox.enable = true;
 
   # Docker
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

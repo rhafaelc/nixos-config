@@ -5,7 +5,7 @@
 }: {
   programs.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    # package = inputs.hyprland.packages."${pkgs.system}".hyprland;
   };
 
   programs = {
@@ -15,18 +15,21 @@
   services.gvfs.enable = true; # Mount, trash, and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
 
-  # SDDM Configuration
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    package = pkgs.kdePackages.sddm;
-    theme = "catppuccin-mocha";
-  };
+  # # SDDM Configuration
+  # services.displayManager.sddm = {
+  #   enable = true;
+  #   wayland.enable = true;
+  #   package = pkgs.kdePackages.sddm;
+  #   theme = "catppuccin-mocha";
+  # };
+  #
+  # # Install SDDM theme
+  # environment.systemPackages = with pkgs; [
+  #   catppuccin-sddm
+  # ];
 
-  # Install SDDM theme
-  environment.systemPackages = with pkgs; [
-    catppuccin-sddm
-  ];
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
