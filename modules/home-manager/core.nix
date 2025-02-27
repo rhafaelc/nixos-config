@@ -5,7 +5,7 @@
   ...
 }: {
   home = {
-    username = variables.username;
+    username = lib.mkDefault variables.username;
     homeDirectory = lib.mkDefault "/home/${variables.username}";
   };
 

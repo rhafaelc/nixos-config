@@ -28,6 +28,9 @@
 
   users.users = {
      ${variables.username} = {
+      isNormalUser = true;
+      group = "rhafaelc";  # Set a group
+      extraGroups = ["wheel"];
       packages = with pkgs; [];
       shell = pkgs.zsh;
 
