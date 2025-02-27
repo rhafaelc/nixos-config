@@ -88,7 +88,7 @@
                 extraSpecialArgs = {inherit inputs variables;};
                 users = {
                   ${variables.username} = ./hosts/digitalocean/home/rhafaelc.nix;
-                  root = ./hosts/diitalocea/home/root.nix;
+                  root = ./hosts/digitalocean/home/root.nix;
                 };
                 backupFileExtension = "backup";
               };
