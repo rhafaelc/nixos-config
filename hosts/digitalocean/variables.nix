@@ -1,5 +1,5 @@
 {
-  username = "root";
+  username = "rhafaelc";
   fullName = "Rhafael Chandra";
   email = "rhafaelchandra@gmail.com";
 

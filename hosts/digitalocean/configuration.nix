@@ -26,15 +26,28 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  users.users.${variables.username} = {
-    packages = with pkgs; [];
-    shell = pkgs.zsh;
+  users.users = {
+     ${variables.username} = {
+      packages = with pkgs; [];
+      shell = pkgs.zsh;
 
-    initialPassword = "nixos";
-    openssh.authorizedKeys.keys = [
-      # change this to your ssh key
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGzdfoeFFKCaOS1svih9nA65qrAGG+dWcWIm3Az3yHw rhafaelc@nixos"
-    ];
+      initialPassword = "nixos";
+      openssh.authorizedKeys.keys = [
+        # change this to your ssh key
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGzdfoeFFKCaOS1svih9nA65qrAGG+dWcWIm3Az3yHw rhafaelc@nixos"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDG1U+u3YCy7mj9c3a9WQcskvaMZyYd4SDe0/+7pmKcr rhafaelchandra@cs-646411612480-default"
+      ];
+    };
+    root = {
+      packages = with pkgs; [];
+      shell = pkgs.zsh;
+
+      initialPassword = "nixos";
+      openssh.authorizedKeys.keys = [
+        # change this to your ssh key
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGzdfoeFFKCaOS1svih9nA65qrAGG+dWcWIm3Az3yHw rhafaelc@nixos"
+      ];
+    };
   };
 
   programs.zsh.enable = true;

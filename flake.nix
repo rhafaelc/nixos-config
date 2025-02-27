@@ -86,7 +86,10 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {inherit inputs variables;};
-                users.${variables.username} = ./hosts/digitalocean/home.nix;
+                users = {
+                  ${variables.username} = ./hosts/digitalocean/home/rhafaelc.nix;
+                  root = ./hosts/diitalocea/home/root.nix;
+                };
                 backupFileExtension = "backup";
               };
             }
