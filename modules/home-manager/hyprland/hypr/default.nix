@@ -134,7 +134,7 @@
         "opacity 0.80 0.80,class:^(code-url-handler)$"
         "opacity 0.80 0.80,class:^(jetbrains-idea-ce)$"
         "opacity 0.80 0.80,class:^(Postman)$"
-  
+
         # Terminal
         "opacity 0.80 0.80,class:^(com.mitchellh.ghostty)$"
         "opacity 0.80 0.80,class:^(kitty)$"
@@ -203,21 +203,20 @@
           "easeInOutCirc, 0.78, 0, 0.15, 1"
         ];
         animation = [
-          "border, 1, 1.6, liner"
-          "borderangle, 1, 82, liner, loop"
-          "windowsIn, 1, 3.2, winIn, slide"
-          "windowsOut, 1, 2.8, easeOutCirc"
-          "windowsMove, 1, 3.0, wind, slide"
-          "fade, 1, 1.8, md3_decel"
-          "layersIn, 1, 1.8, menu_decel, slide"
-          "layersOut, 1, 1.5, menu_accel"
-          "fadeLayersIn, 1, 1.6, menu_decel"
-          "fadeLayersOut, 1, 1.8, menu_accel"
-          "workspaces, 1, 4.0, menu_decel, slide"
-          "specialWorkspace, 1, 2.3, md3_decel, slidefadevert 15%"
+          "border, 1, 0.6, liner"
+          "borderangle, 1, 41, liner, loop"
+          "windowsIn, 1, 1.2, winIn, slide"
+          "windowsOut, 1, 1.0, easeOutCirc"
+          "windowsMove, 1, 1.2, wind, slide"
+          "fade, 1, 0.8, md3_decel"
+          "layersIn, 1, 0.8, menu_decel, slide"
+          "layersOut, 1, 0.7, menu_accel"
+          "fadeLayersIn, 1, 0.7, menu_decel"
+          "fadeLayersOut, 1, 0.8, menu_accel"
+          "workspaces, 1, 1.5, menu_decel, slide"
+          "specialWorkspace, 1, 1.0, md3_decel, slidefadevert 15%"
         ];
       };
-
       dwindle = {
         pseudotile = true; # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
         preserve_split = true; # You probably want this
@@ -308,7 +307,6 @@
         "$mainMod SHIFT, Space, movetoworkspace, special:music"
         "$mainMod, n, togglespecialworkspace, etc"
         "$mainMod SHIFT, n, movetoworkspace, special:etc"
-
 
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
