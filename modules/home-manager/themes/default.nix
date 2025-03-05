@@ -1,12 +1,11 @@
 {
   pkgs,
-  lib,
   ...
 }: {
   qt = {
     enable = true;
     platformTheme = {
-      name = "gtk";
+      name = "adawaita";
     };
     style = {
       name = "adwaita-dark";

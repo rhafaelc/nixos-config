@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  config,
   ...
 }: {
   home.packages = with pkgs; [
@@ -90,8 +89,8 @@
         border_size = 2;
 
         # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-        "col.active_border" = lib.mkForce "rgb(${config.stylix.base16Scheme.base0D})";
-        "col.inactive_border" = lib.mkForce "rgb(${config.stylix.base16Scheme.base02})";
+        # "col.active_border" = lib.mkForce "rgb(${config.stylix.base16Scheme.base0D})";
+        # "col.inactive_border" = lib.mkForce "rgb(${config.stylix.base16Scheme.base02})";
 
         # Set to true enable resizing windows by clicking and dragging on borders and gaps
         resize_on_border = false;

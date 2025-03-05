@@ -6,7 +6,7 @@
   programs.vscode = {
     enable = true;
 
-    extensions = with pkgs.vscode-extensions; [
+    profiles.default.extensions = with pkgs.vscode-extensions; [
       bbenoist.nix
       catppuccin.catppuccin-vsc-icons
       catppuccin.catppuccin-vsc
@@ -23,7 +23,7 @@
       wakatime.vscode-wakatime
     ];
 
-    userSettings = {
+    profiles.default.userSettings = {
       "workbench.iconTheme" = "catppuccin-mocha";
       "workbench.colorTheme" = lib.mkForce "Catppuccin Mocha";
       "editor.fontFamily" = lib.mkForce "JetBrainsMono Nerd Font";

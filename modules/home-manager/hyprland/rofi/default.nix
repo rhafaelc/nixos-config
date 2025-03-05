@@ -1,17 +1,19 @@
-{ pkgs, config, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
-    
+
     # Main configuration
     terminal = "ghostty";
     location = "center";
-    
+
     # Theme configuration
     theme = lib.mkForce "catppuccin-mocha";
-    
+
     extraConfig = {
       modi = "drun";
       show-icons = true;
