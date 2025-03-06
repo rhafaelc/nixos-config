@@ -26,6 +26,10 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+
+
+  users.groups.rhafaelc = {};
+
   users.users = {
      ${variables.username} = {
       isNormalUser = true;

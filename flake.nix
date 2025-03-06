@@ -78,7 +78,7 @@
               };
             }
             ./hosts/digitalocean/configuration.nix
-            inputs.stylix.nixosModules.stylix
+            # inputs.stylix.nixosModules.stylix
             inputs.catppuccin.nixosModules.catppuccin
             home-manager.nixosModules.home-manager
             {
