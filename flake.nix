@@ -24,13 +24,11 @@
   };
 
   outputs = {
-    self,
     nixpkgs,
     home-manager,
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
   in {
     nixosConfigurations = {
       default = let
@@ -78,7 +76,7 @@
               };
             }
             ./hosts/digitalocean/configuration.nix
-            # inputs.stylix.nixosModules.stylix
+            inputs.stylix.nixosModules.stylix
             inputs.catppuccin.nixosModules.catppuccin
             home-manager.nixosModules.home-manager
             {
