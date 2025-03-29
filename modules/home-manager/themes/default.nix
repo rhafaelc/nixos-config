@@ -3,16 +3,14 @@
   lib,
   ...
 }: {
-  qt = {
-    enable = true;
-    platformTheme = {
-      name = lib.mkForce "adawaita";
-    };
-    # style = {
-    #   name = "adwaita-dark";
-    #   package = pkgs.adwaita-qt;
-    # };
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.yaru-theme;
+    name = "Yaru";
+    size = 24;
   };
+
   gtk = {
     enable = true;
     iconTheme = {

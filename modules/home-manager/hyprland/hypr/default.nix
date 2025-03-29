@@ -77,9 +77,7 @@
         "hyprswitch init --show-title --size-factor 4.5 --workspaces-per-row 6 &"
       ];
 
-      env = lib.mkForce [
-        "XCURSOR_SIZE,24"
-        "HYPRCURSOR_SIZE,24"
+      env = [
       ];
 
       general = {
