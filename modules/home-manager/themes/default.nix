@@ -1,22 +1,23 @@
 {
   pkgs,
+  lib,
   ...
 }: {
   qt = {
     enable = true;
     platformTheme = {
-      name = "adawaita";
+      name = lib.mkForce "adawaita";
     };
-    style = {
-      name = "adwaita-dark";
-      package = pkgs.adwaita-qt;
-    };
+    # style = {
+    #   name = "adwaita-dark";
+    #   package = pkgs.adwaita-qt;
+    # };
   };
   gtk = {
     enable = true;
     iconTheme = {
       name = "Papirus Dark";
-      package = pkgs.papirus-icon-theme; 
+      package = pkgs.papirus-icon-theme;
     };
   };
 }
