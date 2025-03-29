@@ -73,6 +73,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "audio"
       # "docker"
     ];
     packages = with pkgs; [];
