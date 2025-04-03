@@ -74,7 +74,7 @@
       "networkmanager"
       "wheel"
       "audio"
-      # "docker"
+      "docker"
     ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
@@ -86,7 +86,7 @@
   programs.firefox.enable = true;
 
   # Docker
-  # virtualisation.docker.enable = true;
+  virtualisation.docker.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

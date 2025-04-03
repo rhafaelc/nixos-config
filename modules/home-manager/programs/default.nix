@@ -12,4 +12,8 @@
     ./postman
     ./devbox
   ];
+
+  programs.lazydocker = {
+    enable = true;
+  };
 }
