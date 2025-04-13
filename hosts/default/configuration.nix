@@ -11,6 +11,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos/appearance
     ../../modules/nixos/hyprland
+    ../../modules/nixos/steam
   ];
 
   # Bootloader.

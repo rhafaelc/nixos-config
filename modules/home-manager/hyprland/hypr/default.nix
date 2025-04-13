@@ -71,7 +71,7 @@
         #   "nm-applet &"
         #   "waybar & hyprpaper & firefox"
         "[workspace 1 silent] ghostty"
-        "[workspace 2 silent] zen"
+        "[workspace 2 silent] zen-beta"
         "[workspace 3 silent] vesktop"
         "[workspace special:music silent] spotify"
         "hyprswitch init --show-title --size-factor 4.5 --workspaces-per-row 6 &"
