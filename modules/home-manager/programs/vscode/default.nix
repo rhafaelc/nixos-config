@@ -7,6 +7,8 @@
     enable = true;
 
     profiles.default.extensions = with pkgs.vscode-extensions; [
+      vscodevim.vim
+
       bbenoist.nix
       catppuccin.catppuccin-vsc-icons
       catppuccin.catppuccin-vsc
@@ -20,6 +22,15 @@
       wix.vscode-import-cost
       bradlc.vscode-tailwindcss
 
+      ms-toolsai.jupyter
+      ms-toolsai.jupyter-keymap
+      ms-toolsai.jupyter-renderers
+      ms-toolsai.vscode-jupyter-slideshow
+      ms-toolsai.vscode-jupyter-cell-tags
+
+      ms-python.python
+      ms-python.black-formatter
+
       wakatime.vscode-wakatime
     ];
 
@@ -32,6 +43,10 @@
       "prettier.printWidth" = 80;
       "editor.formatOnSave" = true;
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[python]" = {
+        "editor.defaultFormatter" = "ms-python.black-formatter";
+      };
+
       "editor.bracketPairColorization.enabled" = true;
       "editor.bracketPairColorization.independentColorPoolPerBracketType" = true;
       "editor.guides.bracketPairs" = true;
