@@ -48,6 +48,27 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  hardware = {
+    bluetooth = {
+      enable = true;
+      package = pkgs.bluez5-experimental;
+      powerOnBoot = true;
+      settings = {
+        General = {
+          Enable = "Source,Sink,Media,Socket";
+          Experimental = true; # Enable experimental features
+          FastConnectable = true; # Improve connection speed
+          JustWorksRepairing = "always";
+          controllerMode = "bredr"; # Allow low energy mode?
+          MultiProfile = "multiple"; # Allow multiple profiles
+          AutoEnable = true;
+        };
+      };
+    };
+  };
+
+  services.blueman.enable = true;
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;

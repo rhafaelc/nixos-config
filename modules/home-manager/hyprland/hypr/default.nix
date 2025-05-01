@@ -69,6 +69,7 @@
         "wl-paste --type image --watch cliphist store" # Store image clips
         #   "$terminal"
         #   "nm-applet &"
+        "blueman-applet &"
         #   "waybar & hyprpaper & firefox"
         "[workspace 1 silent] ghostty"
         "[workspace 2 silent] zen-beta"
