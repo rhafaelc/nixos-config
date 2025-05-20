@@ -33,6 +33,10 @@
 
   xdg.configFile = {
     "hypr/mocha.conf".source = ./mocha.conf;
+    "hypr/scripts/toggle_waybar.sh" = {
+      source = ./scripts/toggle_waybar.sh;
+      executable = true;
+    };
   };
 
   wayland.windowManager.hyprland = {
@@ -263,6 +267,8 @@
         "$mainMod SHIFT, F, togglefloating,"
         "$mainMod, R, exec, $menu"
         "$mainMod, DELETE, exec, hyprlock"
+
+        "$mainMod, B, exec, ~/.config/hypr/scripts/toggle_waybar.sh"
 
         "$mainMod, h, movefocus, l"
         "$mainMod, l, movefocus, r"
