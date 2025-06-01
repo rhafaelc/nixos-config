@@ -2,7 +2,7 @@
   gitSyncObsidian = pkgs.writeScriptBin "git-sync-obisidian" ''
     #!/bin/sh
 
-    VAULT_DIR="$HOME/PARA"
+    VAULT_DIR="$HOME/obsidian-vault"
 
     cd $VAULT_DIR || exit 1
 
