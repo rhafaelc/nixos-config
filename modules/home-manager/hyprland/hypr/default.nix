@@ -79,6 +79,7 @@
         "[workspace 2 silent] zen-beta"
         "[workspace 3 silent] vesktop"
         "[workspace special:music silent] spotify"
+        "[workspace special:etc silent] obsidian"
         "hyprswitch init --show-title --size-factor 4.5 --workspaces-per-row 6 &"
       ];
 
@@ -130,6 +131,7 @@
         "opacity 0.90 0.90,class:^(Google-chrome)$"
         "opacity 0.90 0.90,class:^(Brave-browser)$"
         "opacity 0.90 0.90,class:^(zen)$"
+        "opacity 0.90 0.90,class:^(obsidian)$"
 
         # Development
         "opacity 0.80 0.80,class:^([Cc]ode)$"
