@@ -10,9 +10,9 @@
 
     git commit -m "$(date '+%Y-%m-%d %H:%M:%S')" || exit 0
 
-    git pull --rebase origin master || exit 0
+    git pull --rebase origin main || exit 0
 
-    git push origin master
+    git push origin main
   '';
 in {
   home.packages = [gitSyncObsidian];
