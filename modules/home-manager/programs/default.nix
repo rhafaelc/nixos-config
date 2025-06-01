@@ -11,6 +11,7 @@
     ./jetbrains
     ./postman
     ./devbox
+    ./obsidian
   ];
 
   programs.lazydocker = {
