@@ -80,7 +80,7 @@
         "[workspace 3 silent] vesktop"
         "[workspace special:music silent] spotify"
         "[workspace special:etc silent] obsidian"
-        "hyprswitch init --show-title --size-factor 4.5 --workspaces-per-row 6 &"
+        "hyprshell init --show-title --size-factor 4.5 --workspaces-per-row 6 &"
       ];
 
       env = [
@@ -324,8 +324,8 @@
         "$mainMod SHIFT, S, exec, grim -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
         "$mainMod, Print, exec, grim -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
 
-        "alt, tab, exec, hyprswitch gui --mod-key alt --key tab --close mod-key-release --reverse-key=key=grave --sort-recent && hyprswitch dispatch"
-        "alt grave, tab, exec, hyprswitch gui --mod-key alt --key tab --close mod-key-release --reverse-key=key=grave --sort-recent && hyprswitch dispatch -r"
+        "alt, tab, exec, hyprshell gui --mod-key alt --key tab --close mod-key-release --reverse-key=key=grave --sort-recent && hyprshell dispatch"
+        "alt grave, tab, exec, hyprshell gui --mod-key alt --key tab --close mod-key-release --reverse-key=key=grave --sort-recent && hyprshell dispatch -r"
       ];
 
       bindm = [
