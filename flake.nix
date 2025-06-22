@@ -17,6 +17,7 @@
     neovim.url = "github:rhafaelc/nixvim";
 
     hyprshell.url = "github:h3rmt/hyprshell?ref=hyprshell-release";
+    hyprshell.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-jetbrains-plugins.url = "github:theCapypara/nix-jetbrains-plugins";
 
@@ -26,6 +27,7 @@
   outputs = {
     nixpkgs,
     home-manager,
+    hyprshell,
     ...
   } @ inputs: let
     system = "x86_64-linux";

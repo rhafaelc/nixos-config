@@ -267,7 +267,7 @@
         "$mainMod, E, exec, $fileManager"
         "$mainMod, F, fullscreen,"
         "$mainMod SHIFT, F, togglefloating,"
-        "$mainMod, R, exec, $menu"
+        # "$mainMod, R, exec, $menu"
         "$mainMod, DELETE, exec, hyprlock"
 
         "$mainMod, B, exec, ~/.config/hypr/scripts/toggle_waybar.sh"
