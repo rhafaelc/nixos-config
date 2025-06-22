@@ -2,6 +2,6 @@
   system = "x86_64-linux";
 in {
   home.packages = [
-    inputs.hyprswitch.packages."${system}".default
+    inputs.hyprshell.packages."${system}".default
   ];
 }

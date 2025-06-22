@@ -8,7 +8,7 @@
     ./swaync
     ./hyprlock
     ./hypridle
-    ./hyprswitch
+    ./hyprshell
 
     ./wlogout
     ./scripts/clipboard-history.nix

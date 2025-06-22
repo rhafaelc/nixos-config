@@ -16,7 +16,7 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     neovim.url = "github:rhafaelc/nixvim";
 
-    hyprswitch.url = "github:h3rmt/hyprswitch/release";
+    hyprshell.url = "github:h3rmt/hyprshell";
 
     nix-jetbrains-plugins.url = "github:theCapypara/nix-jetbrains-plugins";
 
