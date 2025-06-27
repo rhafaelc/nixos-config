@@ -1,5 +1,6 @@
 {
   imports = [
+    ./anki
     ./git
     ./spotify
     ./vscode
