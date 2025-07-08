@@ -52,8 +52,33 @@
       };
 
       monitor = [
-        ",1920x1080, auto, 1, bitdepth, 8"
-        ",preferred,auto,1,mirror,eDP-1,bitdepth,8"
+        "eDP-1,preferred,0x0,1,bitdepth,8"
+        "DP-1,preferred,0x-1080,1,bitdepth,8"
+      ];
+
+      workspace = [
+        "eDP-1,1"
+        "1,monitor:eDP-1"
+        "2,monitor:eDP-1"
+        "3,monitor:eDP-1"
+        "4,monitor:eDP-1"
+        "5,monitor:eDP-1"
+        "6,monitor:eDP-1"
+        "7,monitor:eDP-1"
+        "8,monitor:eDP-1"
+        "10,monitor:eDP-1"
+
+        "DP-1,11"
+        "11,monitor:DP-1"
+        "12,monitor:DP-1"
+        "13,monitor:DP-1"
+        "14,monitor:DP-1"
+        "15,monitor:DP-1"
+        "16,monitor:DP-1"
+        "17,monitor:DP-1"
+        "18,monitor:DP-1"
+        "19,monitor:DP-1"
+        "110,monitor:DP-1"
       ];
 
       xwayland = {
@@ -277,6 +302,9 @@
         "$mainMod, k, movefocus, u"
         "$mainMod, j, movefocus, d"
 
+        "$mainMod, TAB, focusmonitor, u"
+        "$mainMod SHIFT, TAB, focusmonitor, d"
+
         "$mainMod SHIFT, h, movewindow, l"
         "$mainMod SHIFT, l, movewindow, r"
         "$mainMod SHIFT, k, movewindow, u"
@@ -287,27 +315,27 @@
         "$mainMod CTRL, k, resizeactive, 0 -20"
         "$mainMod CTRL, j, resizeactive, 0 20"
 
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
+        "$mainMod, 1, exec, hyprsome workspace 1"
+        "$mainMod, 2, exec, hyprsome workspace 2"
+        "$mainMod, 3, exec, hyprsome workspace 3"
+        "$mainMod, 4, exec, hyprsome workspace 4"
+        "$mainMod, 5, exec, hyprsome workspace 5"
+        "$mainMod, 6, exec, hyprsome workspace 6"
+        "$mainMod, 7, exec, hyprsome workspace 7"
+        "$mainMod, 8, exec, hyprsome workspace 8"
+        "$mainMod, 9, exec, hyprsome workspace 9"
+        "$mainMod, 0, exec, hyprsome workspace 10"
 
-        "$mainMod SHIFT, 1, movetoworkspace, 1"
-        "$mainMod SHIFT, 2, movetoworkspace, 2"
-        "$mainMod SHIFT, 3, movetoworkspace, 3"
-        "$mainMod SHIFT, 4, movetoworkspace, 4"
-        "$mainMod SHIFT, 5, movetoworkspace, 5"
-        "$mainMod SHIFT, 6, movetoworkspace, 6"
-        "$mainMod SHIFT, 7, movetoworkspace, 7"
-        "$mainMod SHIFT, 8, movetoworkspace, 8"
-        "$mainMod SHIFT, 9, movetoworkspace, 9"
-        "$mainMod SHIFT, 0, movetoworkspace, 10"
+        "$mainMod SHIFT, 1, exec, hyprsome move 1"
+        "$mainMod SHIFT, 2, exec, hyprsome move 2"
+        "$mainMod SHIFT, 3, exec, hyprsome move 3"
+        "$mainMod SHIFT, 4, exec, hyprsome move 4"
+        "$mainMod SHIFT, 5, exec, hyprsome move 5"
+        "$mainMod SHIFT, 6, exec, hyprsome move 6"
+        "$mainMod SHIFT, 7, exec, hyprsome move 7"
+        "$mainMod SHIFT, 8, exec, hyprsome move 8"
+        "$mainMod SHIFT, 9, exec, hyprsome move 9"
+        "$mainMod SHIFT, 0, exec, hyprsome move 10"
 
         "$mainMod, Space, togglespecialworkspace, music"
         "$mainMod SHIFT, Space, movetoworkspace, special:music"
