@@ -15,7 +15,7 @@
     git push origin main
   '';
 in {
-  home.packages = [gitSyncObsidian];
+  home.packages = [pkgs.obsidian gitSyncObsidian];
 
   systemd.user.services.git-sync-obisidian = {
     Unit = {

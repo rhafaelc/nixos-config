@@ -9,6 +9,7 @@
     ./hyprlock
     ./hypridle
     ./hyprshell
+    ./hyprsome
 
     ./wlogout
     ./scripts/clipboard-history.nix
