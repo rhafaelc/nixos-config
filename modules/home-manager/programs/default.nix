@@ -13,6 +13,7 @@
     ./postman
     ./devbox
     ./obsidian
+    ./flatpak
   ];
 
   programs.lazydocker = {

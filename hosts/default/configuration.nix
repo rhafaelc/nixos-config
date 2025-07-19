@@ -48,6 +48,9 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Flatpak
+  services.flatpak.enable = true;
+
   hardware = {
     bluetooth = {
       enable = true;

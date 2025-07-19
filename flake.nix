@@ -22,12 +22,13 @@
     nix-jetbrains-plugins.url = "github:theCapypara/nix-jetbrains-plugins";
 
     disko.url = "github:nix-community/disko";
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
   outputs = {
     nixpkgs,
     home-manager,
-    hyprshell,
     ...
   } @ inputs: let
     system = "x86_64-linux";
