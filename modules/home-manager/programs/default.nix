@@ -14,9 +14,6 @@
     ./devbox
     ./obsidian
     ./flatpak
+    ./zotero
   ];
-
-  programs.lazydocker = {
-    enable = true;
-  };
 }
