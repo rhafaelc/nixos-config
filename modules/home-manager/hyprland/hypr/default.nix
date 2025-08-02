@@ -352,8 +352,7 @@
         "$mainMod SHIFT, S, exec, grim -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
         "$mainMod, Print, exec, grim -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
 
-        "alt, tab, exec, hyprshell gui --mod-key alt --key tab --close mod-key-release --reverse-key=key=grave --sort-recent && hyprshell dispatch"
-        "alt grave, tab, exec, hyprshell gui --mod-key alt --key tab --close mod-key-release --reverse-key=key=grave --sort-recent && hyprshell dispatch -r"
+        "ALT, TAB, exec, hyprshell gui --mod-key alt --key tab --close mod-key-release --reverse-key=key=grave --sort-recent"
       ];
 
       bindm = [
