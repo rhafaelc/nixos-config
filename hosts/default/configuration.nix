@@ -11,8 +11,14 @@
     ./hardware-configuration.nix
     ../../modules/nixos/appearance
     ../../modules/nixos/hyprland
-    ../../modules/nixos/steam
+    # ../../modules/nixos/steam
   ];
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
