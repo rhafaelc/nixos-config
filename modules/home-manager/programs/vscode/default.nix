@@ -1,8 +1,11 @@
 {
+  inputs,
   pkgs,
   lib,
   ...
-}: {
+}: let
+  vsx = inputs.nix-vscode-extensions.extensions."x86_64-linux".vscode-marketplace;
+in {
   programs.vscode = {
     enable = true;
 
@@ -21,6 +24,7 @@
       dbaeumer.vscode-eslint
       wix.vscode-import-cost
       bradlc.vscode-tailwindcss
+      vsx.dsznajder.es7-react-js-snippets
 
       ms-toolsai.jupyter
       ms-toolsai.jupyter-keymap

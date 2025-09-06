@@ -20,7 +20,7 @@
     hyprshell.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-jetbrains-plugins.url = "github:theCapypara/nix-jetbrains-plugins";
-
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     disko.url = "github:nix-community/disko";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
