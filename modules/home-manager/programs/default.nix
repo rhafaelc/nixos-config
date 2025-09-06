@@ -15,5 +15,6 @@
     ./obsidian
     ./flatpak
     ./zotero
+    ./devenv
   ];
 }
