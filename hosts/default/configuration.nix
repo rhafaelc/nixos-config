@@ -11,7 +11,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos/appearance
     ../../modules/nixos/hyprland
-    # ../../modules/nixos/steam
+    ../../modules/nixos/steam
   ];
 
   nix.gc = {
