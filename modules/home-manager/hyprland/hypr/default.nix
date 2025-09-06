@@ -292,7 +292,7 @@
         "$mainMod, E, exec, $fileManager"
         "$mainMod, F, fullscreen,"
         "$mainMod SHIFT, F, togglefloating,"
-        # "$mainMod, R, exec, $menu"
+        "$mainMod, R, exec, $menu"
         "$mainMod, DELETE, exec, hyprlock"
 
         "$mainMod, B, exec, ~/.config/hypr/scripts/toggle_waybar.sh"
@@ -352,7 +352,9 @@
         "$mainMod SHIFT, S, exec, grim -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
         "$mainMod, Print, exec, grim -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
 
-        "ALT, TAB, exec, hyprshell gui --mod-key alt --key tab --close mod-key-release --reverse-key=key=grave --sort-recent"
+        # "ALT, TAB, exec, hyprshell gui --mod-key alt --key tab --close mod-key-release --reverse-key=key=grave --sort-recent"
+        "ALT, TAB, cyclenext, active"
+        "ALT, grave, cyclenext, active, prev"
       ];
 
       bindm = [

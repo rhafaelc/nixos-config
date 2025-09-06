@@ -8,7 +8,7 @@
     ./swaync
     ./hyprlock
     ./hypridle
-    ./hyprshell
+    # ./hyprshell
     ./hyprsome
 
     ./wlogout

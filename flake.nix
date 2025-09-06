@@ -16,8 +16,9 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     neovim.url = "github:rhafaelc/nixvim";
 
-    hyprshell.url = "github:h3rmt/hyprshell?ref=hyprshell-release";
-    hyprshell.inputs.nixpkgs.follows = "nixpkgs";
+    # hyprshell.url = "github:h3rmt/hyprshell?ref=hyprshell-release";
+    # hyprshell.url = "github:h3rmt/hyprshell?rev=601c7eb1a61854d0d70b257447e9ddc044810855";
+    # hyprshell.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-jetbrains-plugins.url = "github:theCapypara/nix-jetbrains-plugins";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
