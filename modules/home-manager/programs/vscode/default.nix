@@ -35,8 +35,6 @@ in {
       ms-python.python
       ms-python.black-formatter
 
-      wakatime.vscode-wakatime
-
       ms-vscode-remote.remote-ssh
       ms-vscode-remote.remote-ssh-edit
     ];
