@@ -6,15 +6,9 @@
     ./vscode
     ./zen-browser
     ./vesktop
-    ./fastfetch
     ./neovim
     ./vlc
-    ./jetbrains
     ./postman
-    ./devbox
     ./obsidian
-    ./flatpak
-    ./zotero
-    ./devenv
   ];
 }
