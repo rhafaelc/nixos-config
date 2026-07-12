@@ -5,6 +5,6 @@
 
   # System settings
   hostname = "nixos";
-  timezone = "Asia/Jakarta";
+  timezone = "Asia/Tokyo";
   locale = "en_US.UTF-8";
 }
