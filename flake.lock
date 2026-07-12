@@ -290,27 +290,6 @@
         "type": "github"
       }
     },
-    "home-manager_2": {
-      "inputs": {
-        "nixpkgs": [
-          "zen-browser",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1752603129,
-        "narHash": "sha256-S+wmHhwNQ5Ru689L2Gu8n1OD6s9eU9n9mD827JNR+kw=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "e8c19a3cec2814c754f031ab3ae7316b64da085b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
     "ixx": {
       "inputs": {
         "flake-utils": [
@@ -832,19 +811,18 @@
     },
     "zen-browser": {
       "inputs": {
-        "home-manager": "home-manager_2",
         "nixpkgs": "nixpkgs_9"
       },
       "locked": {
-        "lastModified": 1757971010,
-        "narHash": "sha256-x+p/a/OS4n6V+gOwCJl+C7xXzTPB9CkVouaCggISB54=",
-        "owner": "0xc000022070",
+        "lastModified": 1783668749,
+        "narHash": "sha256-EDJjJYGT5pQKTBqmz+OA2sqE20kjj6mP699JFGDzse4=",
+        "owner": "youwen5",
         "repo": "zen-browser-flake",
-        "rev": "0d5a5b88efc7d2cf05aa2f90082a387a4ddd9358",
+        "rev": "e8041a3571e8cadb57dc18a3d6362d753510b94a",
         "type": "github"
       },
       "original": {
-        "owner": "0xc000022070",
+        "owner": "youwen5",
         "repo": "zen-browser-flake",
         "type": "github"
       }

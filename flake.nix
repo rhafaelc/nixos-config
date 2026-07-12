@@ -8,22 +8,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix.url = "github:danth/stylix";
-    catppuccin.url = "github:catppuccin/nix";
-
-    # hyprland.url = "github:hyprwm/Hyprland";
-
     zen-browser.url = "github:youwen5/zen-browser-flake";
     neovim.url = "github:rhafaelc/nixvim";
-
-    # hyprshell.url = "github:h3rmt/hyprshell?ref=hyprshell-release";
-    # hyprshell.url = "github:h3rmt/hyprshell?rev=601c7eb1a61854d0d70b257447e9ddc044810855";
-    # hyprshell.inputs.nixpkgs.follows = "nixpkgs";
-
-    nix-jetbrains-plugins.url = "github:theCapypara/nix-jetbrains-plugins";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    disko.url = "github:nix-community/disko";
-
     nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
@@ -42,8 +29,6 @@
           specialArgs = {inherit inputs variables;};
           modules = [
             ./hosts/default/configuration.nix
-            inputs.stylix.nixosModules.stylix
-            inputs.catppuccin.nixosModules.catppuccin
             home-manager.nixosModules.home-manager
             {
               home-manager = {
@@ -57,46 +42,6 @@
           ];
         };
 
-      digitalocean = let
-        variables = import ./hosts/digitalocean/variables.nix;
-      in
-        nixpkgs.lib.nixosSystem {
-          system = system;
-          specialArgs = {inherit inputs variables;};
-          modules = [
-            inputs.disko.nixosModules.disko
-            {disko.devices.disk.disk1.device = "/dev/vda";}
-            {
-              # do not use DHCP, as DigitalOcean provisions IPs using cloud-init
-              networking.useDHCP = nixpkgs.lib.mkForce false;
-
-              services.cloud-init = {
-                enable = true;
-                network.enable = true;
-                settings = {
-                  datasource_list = ["ConfigDrive"];
-                  datasource.ConfigDrive = {};
-                };
-              };
-            }
-            ./hosts/digitalocean/configuration.nix
-            inputs.stylix.nixosModules.stylix
-            inputs.catppuccin.nixosModules.catppuccin
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = {inherit inputs variables;};
-                users = {
-                  ${variables.username} = ./hosts/digitalocean/home/rhafaelc.nix;
-                  root = ./hosts/digitalocean/home/root.nix;
-                };
-                backupFileExtension = "backup";
-              };
-            }
-          ];
-        };
     };
   };
 }
