@@ -8,6 +8,6 @@
     homeDirectory = lib.mkDefault "/home/${variables.username}";
   };
 
-  home.stateVersion = "24.11";
+  home.stateVersion = "26.05";
   programs.home-manager.enable = true;
 }
