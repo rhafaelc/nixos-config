@@ -25,7 +25,7 @@
     cliphist # Clipboard history
 
     # File management
-    xfce.thunar # File manager
+    thunar # File manager
 
     # Image viewing
     qimgv # Image viewer
