@@ -9,7 +9,6 @@ let
 in {
   home.packages = [
     pkgs.ripgrep
-    inputs.neovim.packages."${system}".default
   ];
 }
 
