@@ -29,357 +29,395 @@
 
     # Image viewing
     qimgv # Image viewer
-  ];
 
-  xdg.configFile = {
-    "hypr/mocha.conf".source = ./mocha.conf;
-    "hypr/scripts/toggle_waybar.sh" = {
-      source = ./scripts/toggle_waybar.sh;
-      executable = true;
-    };
-  };
+    kitty
+  ];
 
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "lua";
+    extraConfig = /* lua */ ''
+hl.curve('snap', {
+  type = 'bezier',
+  points = {
+    { 0.5, 1.0 },
+    { 0.2, 1.0 },
+  },
+})
 
-    settings = {
-      misc = {
-        vrr = 0;
-        disable_hyprland_logo = true;
-        disable_splash_rendering = true;
-        force_default_wallpaper = 0;
-        disable_hyprland_qtutils_check = true;
-      };
+hl.curve('snap2', {
+  type = 'bezier',
+  points = {
+    { 0.5, 1.0 },
+    { 0.25, 1.0 },
+  },
+})
 
-      monitor = [
-        "eDP-1,preferred,0x0,1,bitdepth,8"
-        "DP-1,preferred,0x-1080,1,bitdepth,8"
-      ];
+hl.animation {
+  leaf = 'global',
+  enabled = true,
+  speed = 0.7,
+  bezier = 'snap',
+}
 
-      workspace = [
-        "eDP-1,1"
-        "1,monitor:eDP-1"
-        "2,monitor:eDP-1"
-        "3,monitor:eDP-1"
-        "4,monitor:eDP-1"
-        "5,monitor:eDP-1"
-        "6,monitor:eDP-1"
-        "7,monitor:eDP-1"
-        "8,monitor:eDP-1"
-        "10,monitor:eDP-1"
+hl.animation {
+  leaf = 'border',
+  enabled = true,
+  speed = 0.7,
+  bezier = 'snap',
+}
 
-        "DP-1,11"
-        "11,monitor:DP-1"
-        "12,monitor:DP-1"
-        "13,monitor:DP-1"
-        "14,monitor:DP-1"
-        "15,monitor:DP-1"
-        "16,monitor:DP-1"
-        "17,monitor:DP-1"
-        "18,monitor:DP-1"
-        "19,monitor:DP-1"
-        "110,monitor:DP-1"
-      ];
+hl.animation {
+  leaf = 'windows',
+  enabled = true,
+  speed = 0.7,
+  bezier = 'snap2',
+}
 
-      xwayland = {
-        force_zero_scaling = true;
-      };
+hl.animation {
+  leaf = 'windowsIn',
+  enabled = true,
+  speed = 0.65,
+  bezier = 'snap2',
+  style = 'popin 95%',
+}
 
-      "$terminal" = "ghostty";
-      "$fileManager" = "thunar";
-      "$menu" = "rofi -show drun";
+hl.animation {
+  leaf = 'windowsOut',
+  enabled = true,
+  speed = 0.65,
+  bezier = 'snap2',
+  style = 'popin 70%',
+}
 
-      exec-once = [
-        "waybar"
-        "swaync"
-        "mkdir -p ~/.cache/cliphist"
-        "echo 'max_elements = 100' > ~/.cache/cliphist/config" # Limit to 100 entries
-        "wl-paste --type text --watch cliphist store" # Store text clips
-        "wl-paste --type image --watch cliphist store" # Store image clips
-        #   "$terminal"
-        #   "nm-applet &"
-        "blueman-applet &"
-        #   "waybar & hyprpaper & firefox"
-        "[workspace 1 silent] ghostty"
-        "[workspace 2 silent] zen-beta"
-        "[workspace 3 silent] vesktop"
-        "[workspace special:music silent] spotify"
-        "[workspace special:etc silent] obsidian"
-        "hyprshell init --show-title --size-factor 4.5 --workspaces-per-row 6 &"
-      ];
+hl.animation {
+  leaf = 'fadeIn',
+  enabled = true,
+  speed = 0.7,
+  bezier = 'snap',
+}
 
-      env = [
-      ];
+hl.animation {
+  leaf = 'fadeOut',
+  enabled = true,
+  speed = 0.7,
+  bezier = 'snap',
+}
 
-      general = {
-        gaps_in = 5;
-        gaps_out = 8;
+hl.animation {
+  leaf = 'workspaces',
+  enabled = true,
+  speed = 0.7,
+  bezier = 'snap',
+  style = 'slide',
+}
 
-        border_size = 2;
+hl.animation {
+  leaf = 'layers',
+  enabled = true,
+  speed = 0.7,
+  bezier = 'snap',
+}
 
-        # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-        # "col.active_border" = lib.mkForce "rgb(${config.stylix.base16Scheme.base0D})";
-        # "col.inactive_border" = lib.mkForce "rgb(${config.stylix.base16Scheme.base02})";
+hl.on('hyprland.start', function()
+  -- core services
+  hl.exec_cmd('noctalia --daemon')
+  hl.exec_cmd('wl-paste --watch cliphist store')
 
-        # Set to true enable resizing windows by clicking and dragging on borders and gaps
-        resize_on_border = false;
+  -- apps
 
-        # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
-        allow_tearing = false;
+  -- workspace 1: browser
+  hl.exec_cmd('hyprctl dispatch exec "[workspace 1 silent] zen"')
 
-        layout = "dwindle";
-      };
+  -- workspace 2: okular
+  -- hl.exec_cmd('hyprctl dispatch exec "[workspace 2 silent] okular"')
 
-      decoration = {
-        rounding = 8;
+  -- workspace 3: anki
+  hl.exec_cmd('hyprctl dispatch exec "[workspace 3 silent] anki"')
+  hl.exec_cmd('hyprctl dispatch exec "[workspace 3 silent] vesktop"')
 
-        shadow = {
-          enabled = true;
-          range = 4;
-          render_power = 3;
-          color = lib.mkDefault "rgba(1a1a1aee)";
-        };
+  -- special workspace: spotify
+  hl.exec_cmd('hyprctl dispatch exec "[workspace special:etc silent] spotify"')
+end)
 
-        blur = {
-          enabled = true;
-          size = 5;
-          passes = 3;
-          new_optimizations = true;
-          ignore_opacity = true;
-          vibrancy = 0.1696;
-        };
-      };
+hl.config {
+  listener = {
+    {
+      timeout = 150, -- 2.5 min
+      on_timeout = 'brightnessctl -s set 10',
+      on_resume = 'brightnessctl -r',
+    },
 
-      windowrulev2 = [
-        # Browsers
-        "opacity 0.90 0.90,class:^(firefox)$"
-        "opacity 0.90 0.90,class:^(Google-chrome)$"
-        "opacity 0.90 0.90,class:^(Brave-browser)$"
-        "opacity 0.90 0.90,class:^(zen)$"
-        "opacity 0.90 0.90,class:^(obsidian)$"
+    -- Uncomment if you have keyboard backlight
+    -- {
+    --   timeout = 150,
+    --   on_timeout = 'brightnessctl -sd rgb:kbd_backlight set 0',
+    --   on_resume = 'brightnessctl -rd rgb:kbd_backlight',
+    -- },
 
-        # Development
-        "opacity 0.80 0.80,class:^([Cc]ode)$"
-        "opacity 0.80 0.80,class:^(code-url-handler)$"
-        "opacity 0.80 0.80,class:^(jetbrains-idea-ce)$"
-        "opacity 0.80 0.80,class:^(Postman)$"
+    {
+      timeout = 300, -- 5 min
+      on_timeout = 'loginctl lock-session',
+    },
 
-        # Terminal
-        "opacity 0.80 0.80,class:^(com.mitchellh.ghostty)$"
-        "opacity 0.80 0.80,class:^(kitty)$"
+    {
+      timeout = 330, -- 5.5 min
+      on_timeout = 'hyprctl dispatch dpms off',
+      on_resume = 'hyprctl dispatch dpms on',
+    },
 
-        # File managers
-        "opacity 0.80 0.80,class:^(thunar)$"
+    {
+      timeout = 1800, -- 30 min
+      on_timeout = 'systemctl suspend',
+    },
+  },
+}
 
-        # System
-        "opacity 0.80 0.70,class:^(com.saivert.pwvucontrol)$"
-        "opacity 0.80 0.70,class:^(blueman-manager)$"
-        "opacity 0.80 0.70,class:^(nm-connection-editor)$"
+hl.config {
+  misc = {
+    disable_hyprland_logo = true,
+    enable_swallow = false,
+  },
+}
 
-        # Authentication
-        "opacity 0.80 0.70,class:^(polkit-gnome-authentication-agent-1)$"
+hl.config {
+  input = {
+    kb_layout = 'us',
+    touchpad = {
+      natural_scroll = true,
+      disable_while_typing = false,
+    },
+  },
+}
 
-        # Media
-        "opacity 0.80 0.70,class:^([Ss]potify)$"
-        "opacity 0.80 0.70,class:^(vesktop)$"
+hl.gesture {
+  fingers = 4,
+  direction = 'horizontal',
+  action = 'workspace',
+}
 
-        # Floating windows
-        "float,title:^(Open)$"
-        "float,title:^(Choose Files)$"
-        "float,title:^(Save As)$"
-        "float,title:^(File Operation Progress)$"
-        "float,class:^(pavucontrol)$"
-        "float,class:^(blueman-manager)$"
-        "float,class:^(nm-connection-editor)$"
+hl.gesture({
+  fingers = 3,
+  direction = 'right',
+  action = function()
+    hl.dispatch(hl.dsp.focus({ direction = 'left' }))
+  end,
+})
 
-        # Fix some XWayland apps
-        "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
-      ];
+hl.gesture({
+  fingers = 3,
+  direction = 'left',
+  action = function()
+    hl.dispatch(hl.dsp.focus({ direction = 'right' }))
+  end,
+})
 
-      layerrule = [
-        "blur,rofi"
-        "ignorezero,rofi"
-        "blur,notifications"
-        "ignorezero,notifications"
-        "blur,swaync-notification-window"
-        "ignorezero,swaync-notification-window"
-        "blur,swaync-control-center"
-        "ignorezero,swaync-control-center"
-        "blur,logout_dialog"
-      ];
 
-      animations = {
-        enabled = true;
-        bezier = [
-          "wind, 0.05, 0.85, 0.03, 0.97"
-          "winIn, 0.07, 0.88, 0.04, 0.99"
-          "winOut, 0.20, -0.15, 0, 1"
-          "liner, 1, 1, 1, 1"
-          "md3_standard, 0.12, 0, 0, 1"
-          "md3_decel, 0.05, 0.80, 0.10, 0.97"
-          "md3_accel, 0.20, 0, 0.80, 0.08"
-          "overshot, 0.05, 0.85, 0.07, 1.04"
-          "crazyshot, 0.1, 1.22, 0.68, 0.98"
-          "hyprnostretch, 0.05, 0.82, 0.03, 0.94"
-          "menu_decel, 0.05, 0.82, 0, 1"
-          "menu_accel, 0.20, 0, 0.82, 0.10"
-          "easeInOutCirc, 0.75, 0, 0.15, 1"
-          "easeOutCirc, 0, 0.48, 0.38, 1"
-          "easeOutExpo, 0.10, 0.94, 0.23, 0.98"
-          "softAcDecel, 0.20, 0.20, 0.15, 1"
-          "md2, 0.30, 0, 0.15, 1"
-          "OutBack, 0.28, 1.40, 0.58, 1"
-          "easeInOutCirc, 0.78, 0, 0.15, 1"
-        ];
-        animation = [
-          "border, 1, 0.6, liner"
-          "borderangle, 1, 41, liner, loop"
-          "windowsIn, 1, 1.2, winIn, slide"
-          "windowsOut, 1, 1.0, easeOutCirc"
-          "windowsMove, 1, 1.2, wind, slide"
-          "fade, 1, 0.8, md3_decel"
-          "layersIn, 1, 0.8, menu_decel, slide"
-          "layersOut, 1, 0.7, menu_accel"
-          "fadeLayersIn, 1, 0.7, menu_decel"
-          "fadeLayersOut, 1, 0.8, menu_accel"
-          "workspaces, 1, 1.5, menu_decel, slide"
-          "specialWorkspace, 1, 1.0, md3_decel, slidefadevert 15%"
-        ];
-      };
-      dwindle = {
-        pseudotile = true; # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-        preserve_split = true; # You probably want this
-      };
+local mainMod = 'SUPER'
 
-      master = {
-        new_status = "master";
-      };
+local terminal = 'ghostty'
 
-      input = {
-        kb_layout = "us";
-        kb_variant = "";
-        kb_model = "";
-        kb_options = "";
-        kb_rules = "";
+local fileManager = 'thunar'
 
-        follow_mouse = 1;
+hl.bind(mainMod .. ' + ' .. 'RETURN', hl.dsp.exec_cmd 'ghostty')
 
-        sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
+hl.bind(mainMod .. ' + ' .. 'R', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call launcher toggle')
 
-        touchpad = {
-          natural_scroll = true;
-          scroll_factor = 0.3;
-        };
-      };
+hl.bind(mainMod .. ' + ' .. 'E', hl.dsp.exec_cmd 'thunar')
 
-      gestures = {
-        gesture = [
-          "3, horizontal, workspace"
-        ];
-      };
+hl.bind(mainMod .. ' + ' .. 'Q', hl.dsp.window.close())
 
-      device = {
-        name = "epic-mouse-v1";
-        sensitivity = -0.5;
-      };
+hl.bind('ALT' .. ' + ' .. 'F4', hl.dsp.window.close())
 
-      "$mainMod" = "SUPER"; # Sets "Windows" key as main modifier
+hl.bind(
+  mainMod .. ' + SHIFT + S',
+  hl.dsp.exec_cmd "grim -g \"$(slurp -o -r -c '##ff0000ff')\" -t png - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
+)
 
-      bind = [
-        "$mainMod, Return, exec, $terminal"
+hl.bind(mainMod .. ' + CTRL + Q', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call lockScreen lock')
 
-        "$mainMod, Q, killactive,"
-        "ALT, F4, killactive,"
-        "$mainMod SHIFT, DELETE, exit,"
-        "$mainMod, E, exec, $fileManager"
-        "$mainMod, F, fullscreen,"
-        "$mainMod SHIFT, F, togglefloating,"
-        "$mainMod, R, exec, $menu"
-        "$mainMod, DELETE, exec, hyprlock"
+hl.bind(mainMod .. ' + ' .. 'CTRL' .. ' + ' .. 'LEFT', hl.dsp.focus { workspace = 'e-1' })
 
-        "$mainMod, B, exec, ~/.config/hypr/scripts/toggle_waybar.sh"
+hl.bind(mainMod .. ' + ' .. 'CTRL' .. ' + ' .. 'RIGHT', hl.dsp.focus { workspace = 'e+1' })
 
-        "$mainMod, h, movefocus, l"
-        "$mainMod, l, movefocus, r"
-        "$mainMod, k, movefocus, u"
-        "$mainMod, j, movefocus, d"
+hl.bind(mainMod .. ' + ' .. 'F', hl.dsp.window.fullscreen())
 
-        "$mainMod, TAB, focusmonitor, u"
-        "$mainMod SHIFT, TAB, focusmonitor, d"
+-- Media controls
 
-        "$mainMod SHIFT, h, movewindow, l"
-        "$mainMod SHIFT, l, movewindow, r"
-        "$mainMod SHIFT, k, movewindow, u"
-        "$mainMod SHIFT, j, movewindow, d"
+hl.bind('XF86AudioPlay', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call media playPause', { locked = true })
 
-        "$mainMod CTRL, h, resizeactive, -20 0"
-        "$mainMod CTRL, l, resizeactive, 20 0"
-        "$mainMod CTRL, k, resizeactive, 0 -20"
-        "$mainMod CTRL, j, resizeactive, 0 20"
+hl.bind('XF86AudioPause', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call media playPause', { locked = true })
 
-        "$mainMod, 1, exec, hyprsome workspace 1"
-        "$mainMod, 2, exec, hyprsome workspace 2"
-        "$mainMod, 3, exec, hyprsome workspace 3"
-        "$mainMod, 4, exec, hyprsome workspace 4"
-        "$mainMod, 5, exec, hyprsome workspace 5"
-        "$mainMod, 6, exec, hyprsome workspace 6"
-        "$mainMod, 7, exec, hyprsome workspace 7"
-        "$mainMod, 8, exec, hyprsome workspace 8"
-        "$mainMod, 9, exec, hyprsome workspace 9"
-        "$mainMod, 0, exec, hyprsome workspace 10"
+hl.bind('XF86AudioNext', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call media next', { locked = true })
 
-        "$mainMod SHIFT, 1, exec, hyprsome move 1"
-        "$mainMod SHIFT, 2, exec, hyprsome move 2"
-        "$mainMod SHIFT, 3, exec, hyprsome move 3"
-        "$mainMod SHIFT, 4, exec, hyprsome move 4"
-        "$mainMod SHIFT, 5, exec, hyprsome move 5"
-        "$mainMod SHIFT, 6, exec, hyprsome move 6"
-        "$mainMod SHIFT, 7, exec, hyprsome move 7"
-        "$mainMod SHIFT, 8, exec, hyprsome move 8"
-        "$mainMod SHIFT, 9, exec, hyprsome move 9"
-        "$mainMod SHIFT, 0, exec, hyprsome move 10"
+hl.bind('XF86AudioPrev', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call media previous', { locked = true })
 
-        "$mainMod, Space, togglespecialworkspace, music"
-        "$mainMod SHIFT, Space, movetoworkspace, special:music"
-        "$mainMod, n, togglespecialworkspace, etc"
-        "$mainMod SHIFT, n, movetoworkspace, special:etc"
+-- Volume
 
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
-        "$mainMod CTRL, right, workspace, e+1"
-        "$mainMod CTRL, left, workspace, e-1"
+hl.bind('XF86AudioRaiseVolume', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call volume increase', { locked = true })
 
-        "$mainMod, V, exec, clipboard-history show"
+hl.bind('XF86AudioLowerVolume', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call volume decrease', { locked = true })
 
-        "$mainMod SHIFT, S, exec, grim -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
-        "$mainMod, Print, exec, grim -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
+hl.bind('XF86AudioMute', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call volume muteOutput', { locked = true })
 
-        # "ALT, TAB, exec, hyprshell gui --mod-key alt --key tab --close mod-key-release --reverse-key=key=grave --sort-recent"
-        "ALT, TAB, cyclenext, active"
-        "ALT, grave, cyclenext, active, prev"
-      ];
+-- Brightness
 
-      bindm = [
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
-        "$mainMod CTRL, mouse:272, resizewindow"
-      ];
+hl.bind('XF86MonBrightnessUp', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call brightness increase', { locked = true })
 
-      bindel = [
-        ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
-        ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-        ",XF86MonBrightnessUp, exec, brightnessctl s 10%+"
-        ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
-      ];
+hl.bind('XF86MonBrightnessDown', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call brightness decrease', { locked = true })
 
-      bindl = [
-        ", XF86AudioNext, exec, playerctl next"
-        ", XF86AudioPause, exec, playerctl play-pause"
-        ", XF86AudioPlay, exec, playerctl play-pause"
-        ", XF86AudioPrev, exec, playerctl previous"
-      ];
-    };
+for i = 1, 9 do
+  hl.bind(
+    mainMod .. ' + ' .. tostring(i),
+    hl.dsp.focus {
+      workspace = tostring(i),
+    }
+  )
+
+  hl.bind(
+    mainMod .. ' + SHIFT + ' .. tostring(i),
+    hl.dsp.window.move {
+      workspace = tostring(i),
+    }
+  )
+end
+
+-- numbered workspaces
+
+for i = 1, 9 do
+  -- switch workspace
+  hl.bind(
+    mainMod .. ' + ' .. tostring(i),
+    hl.dsp.focus {
+      workspace = tostring(i),
+    }
+  )
+
+  -- move focused window to workspace
+  hl.bind(
+    mainMod .. ' + SHIFT + ' .. tostring(i),
+    hl.dsp.window.move {
+      workspace = tostring(i),
+    }
+  )
+end
+
+-- special workspace bindings
+
+hl.bind(mainMod .. ' + ' .. 'U', hl.dsp.workspace.toggle_special 'etc')
+
+hl.bind(
+  mainMod .. ' + ' .. 'SHIFT' .. ' + ' .. 'U',
+  hl.dsp.window.move {
+    workspace = 'special:etc',
+  }
+)
+
+hl.bind('ALT + TAB', hl.dsp.window.cycle_next())
+
+hl.bind(mainMod .. ' + ' .. 'V', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call launcher clipboard')
+
+hl.bind(mainMod .. ' + ' .. 'PERIOD', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call launcher emoji')
+
+hl.bind(mainMod .. ' + ' .. 'COMMA', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call settings toggle')
+
+hl.bind(mainMod .. ' + ' .. 'mouse:272', hl.dsp.window.drag(), { mouse = true })
+
+hl.bind(mainMod .. ' + ' .. 'mouse:273', hl.dsp.window.resize(), { mouse = true })
+
+hl.bind(mainMod .. ' + ' .. 'CTRL' .. ' + ' .. 'mouse:272', hl.dsp.window.resize(), { mouse = true })
+
+hl.bind(mainMod .. ' + ' .. 'mouse_down', hl.dsp.focus { workspace = 'e+1' })
+
+hl.bind(mainMod .. ' + ' .. 'mouse_up', hl.dsp.focus { workspace = 'e-1' })
+
+hl.bind(mainMod .. ' + TAB', function() hl.exec_cmd [[hyprctl eval "hl.config({ general = { layout = 'scrolling' } })"]] end)
+
+hl.bind(mainMod .. ' + SHIFT + TAB', function() hl.exec_cmd [[hyprctl eval "hl.config({ general = { layout = 'dwindle' } })"]] end)
+
+hl.bind(mainMod .. ' + H', hl.dsp.focus { direction = 'left' })
+hl.bind(mainMod .. ' + L', hl.dsp.focus { direction = 'right' })
+hl.bind(mainMod .. ' + K', hl.dsp.focus { direction = 'up' })
+hl.bind(mainMod .. ' + J', hl.dsp.focus { direction = 'down' })
+
+hl.monitor {
+  output = 'eDP-1',
+  mode = 'preferred',
+  position = '0x0',
+  scale = 1,
+  bitdepth = 8,
+}
+
+for i = 1, 10 do
+  hl.workspace_rule {
+    workspace = i,
+    monitor = 'eDP-1',
+    persistent = (i <= 5),
+  }
+end
+
+hl.config {
+  general = {
+    gaps_in = 4,
+    gaps_out = 8,
+    border_size = 2,
+    resize_on_border = false,
+    allow_tearing = false,
+    layout = 'scrolling',
+  },
+}
+
+-- --- decoration ---
+
+hl.config {
+  decoration = {
+    rounding = 10,
+    rounding_power = 2,
+    active_opacity = 1.0,
+    inactive_opacity = 1.0,
+    shadow = {
+      enabled = true,
+      range = 4,
+      render_power = 3,
+    },
+    blur = {
+      enabled = true,
+      size = 3,
+      passes = 1,
+      vibrancy = 0.15,
+    },
+  },
+}
+
+hl.config {
+  dwindle = {
+    preserve_split = true,
+  },
+}
+
+hl.config {
+  master = {
+    new_status = 'master',
+  },
+}
+
+hl.config {
+  scrolling = {
+    fullscreen_on_one_column = true,
+    column_width = 0.7,
+    direction = 'right',
+  },
+}
+
+hl.layer_rule {
+  match = {
+    namespace = 'noctalia-background-.*$',
+  },
+  ignore_alpha = 0.1,
+  blur = true,
+  blur_popups = true,
+}
+
+    '';
   };
 }

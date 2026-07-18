@@ -25,7 +25,4 @@
     };
   };
 
-  wayland.windowManager.hyprland.settings.exec-once = lib.mkAfter [
-    "noctalia --daemon"
-  ];
 }
