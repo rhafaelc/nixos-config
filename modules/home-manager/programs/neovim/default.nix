@@ -3,12 +3,10 @@
   inputs,
   ...
 }:
-
-let
-  system = "x86_64-linux";
-in {
+{
   home.packages = [
     pkgs.ripgrep
   ];
+	programs.neovim.enable = true;
 }
 
