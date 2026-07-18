@@ -1,6 +1,7 @@
 {
   imports = [
     ./hypr
+    ./noctalia
 
     ./btop
     ./rofi
