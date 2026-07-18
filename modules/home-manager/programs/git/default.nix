@@ -4,15 +4,14 @@
   programs.gh.enable = true;
   programs.git = {
     enable = true;
-    userName = variables.fullName;
-    userEmail = variables.email;
     lfs.enable = true;
-    extraConfig = {
+    settings = {
+      user = {
+        name = variables.fullName;
+        email = variables.email;
+      };
       init.defaultBranch = "main";
       safe.directory = ["*"];
     };
-  };
-  programs.lazygit = {
-    enable = true;
   };
 }
