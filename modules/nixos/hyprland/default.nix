@@ -31,4 +31,6 @@
   services.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
 
+  security.pam.services.gdm.enableGnomeKeyring = true;
+  services.gnome.gnome-keyring.enable = true;
 }
