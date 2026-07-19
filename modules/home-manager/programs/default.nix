@@ -10,7 +10,6 @@
     ./vlc
     ./postman
     ./obsidian
-
-    ./github-copilot-cli
+    ./devenv
   ];
 }
