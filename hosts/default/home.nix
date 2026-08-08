@@ -1,17 +1,17 @@
 {
   imports = [
-    ../../modules/home-manager/core.nix
+    ../../home/core.nix
 
-    ../../modules/home-manager/programs
-    ../../modules/home-manager/terminal
-    ../../modules/home-manager/shells
-    ../../modules/home-manager/hyprland
-    ../../modules/home-manager/themes
+    ../../home/programs
+    ../../home/system/terminal
+    ../../home/system/shells
+    ../../home/system/hyprland
+    ../../home/system/themes
   ];
 
   # Place Files Inside Home Directory
   home.file."Pictures/Wallpapers" = {
-    source = ../../modules/home-manager/wallpapers;
+    source = ../../home/wallpapers;
     recursive = true;
   };
 }
