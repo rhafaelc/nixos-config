@@ -23,12 +23,6 @@
     # Utils
     wl-clipboard # Clipboard
     cliphist # Clipboard history
-
-    # File management
-    thunar # File manager
-
-    # Image viewing
-    qimgv # Image viewer
   ];
 
   wayland.windowManager.hyprland = {

@@ -16,5 +16,6 @@
     ./tmux
     ./shell
     ./okular
+    ./qimgv
   ];
 }
