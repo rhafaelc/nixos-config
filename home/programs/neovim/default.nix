@@ -45,6 +45,15 @@
 
       utility.oil-nvim.enable = true;
 
+      keymaps = [
+        {
+          key = "<leader>pv";
+          mode = "n";
+          silent = true;
+          action = ":Oil<CR>";
+        }
+      ];
+
       binds.whichKey.enable = true;
 
       git.gitsigns.enable = true;
