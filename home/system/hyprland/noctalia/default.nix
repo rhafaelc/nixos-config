@@ -25,6 +25,7 @@
             "qt"
             "ghostty"
             "hyprland"
+            "starship"
           ];
 
           community_ids = [
