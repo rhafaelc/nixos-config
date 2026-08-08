@@ -28,21 +28,21 @@
     in
     {
       nixosConfigurations = {
-        default =
+        laptop =
           let
-            variables = import ./hosts/default/variables.nix;
+            variables = import ./hosts/laptop/variables.nix;
           in
           nixpkgs.lib.nixosSystem {
             specialArgs = { inherit inputs variables; };
             modules = [
-              ./hosts/default/configuration.nix
+              ./hosts/laptop/configuration.nix
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   extraSpecialArgs = { inherit inputs variables; };
-                  users.${variables.username} = ./hosts/default/home.nix;
+                  users.${variables.username} = ./hosts/laptop/home.nix;
                   backupFileExtension = "backup";
                 };
               }
