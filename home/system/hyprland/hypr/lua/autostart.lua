@@ -7,15 +7,15 @@ hl.on('hyprland.start', function()
   -- apps
 
   -- workspace 1: browser
-  hl.exec_cmd('hyprctl dispatch exec "[workspace 1 silent] zen"')
+  hl.dispatch(hl.dsp.exec_cmd('zen', { workspace = '1 silent' }))
 
   -- workspace 2: okular
-  -- hl.exec_cmd('hyprctl dispatch exec "[workspace 2 silent] okular"')
+  -- hl.dispatch(hl.dsp.exec_cmd('okular', { workspace = '2 silent' }))
 
   -- workspace 3: anki
-  hl.exec_cmd('hyprctl dispatch exec "[workspace 3 silent] anki"')
-  hl.exec_cmd('sleep 2 && hyprctl dispatch exec "[workspace 3 silent] vesktop"')
+  hl.dispatch(hl.dsp.exec_cmd('anki', { workspace = '3 silent' }))
+  hl.dispatch(hl.dsp.exec_cmd('vesktop', { workspace = '3 silent' }))
 
   -- special workspace: spotify
-  hl.exec_cmd('hyprctl dispatch exec "[workspace special:etc silent] spotify"')
+  hl.dispatch(hl.dsp.exec_cmd('spotify', { workspace = 'special:etc silent' }))
 end)
