@@ -12,5 +12,8 @@
     ./obsidian
     ./devenv
     ./claude-code
+    ./ghostty
+    ./tmux
+    ./shell
   ];
 }

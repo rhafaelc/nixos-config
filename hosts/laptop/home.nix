@@ -3,8 +3,6 @@
     ../../home/core.nix
 
     ../../home/programs
-    ../../home/system/terminal
-    ../../home/system/shells
     ../../home/system/hyprland
     ../../home/system/themes
   ];
