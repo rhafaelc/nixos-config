@@ -7,6 +7,7 @@
       enableZshIntegration = true;
 
       settings = {
+        theme = "noctalia";
         font-family = lib.mkForce "JetBrainsMonoNL Nerd Font Regular";
         font-feature= ["-calt" "-liga" "-dlig"];
         auto-update = "off";
