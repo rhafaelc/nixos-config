@@ -12,9 +12,10 @@ hl.on('hyprland.start', function()
   -- workspace 2: okular
   hl.dispatch(hl.dsp.exec_cmd('okular', { workspace = '2 silent' }))
 
-  -- workspace 3: anki
+  -- workspace 3: anki, vesktop (also backed by window_rule in rules.lua,
+  -- since both target the same workspace and exec-time tagging alone races)
   hl.dispatch(hl.dsp.exec_cmd('anki', { workspace = '3 silent' }))
-  hl.exec_cmd('sleep 2 && hyprctl dispatch exec "[workspace 3 silent] vesktop"')
+  hl.dispatch(hl.dsp.exec_cmd('vesktop', { workspace = '3 silent' }))
 
   -- special workspace: spotify, obsidian
   hl.dispatch(hl.dsp.exec_cmd('spotify', { workspace = 'special:etc silent' }))
