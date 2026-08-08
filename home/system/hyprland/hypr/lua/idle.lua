@@ -15,7 +15,7 @@ hl.config({
 
 		{
 			timeout = 300, -- 5 min
-			on_timeout = "loginctl lock-session",
+			on_timeout = "noctalia msg session lock",
 		},
 
 		{
