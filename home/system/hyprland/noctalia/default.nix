@@ -38,6 +38,11 @@
             output_path = "$XDG_CONFIG_HOME/tmux/theme.conf";
             post_hook = "tmux source-file $XDG_CONFIG_HOME/tmux/theme.conf";
           };
+
+          user.satty = {
+            input_path = "$XDG_CONFIG_HOME/noctalia/templates/satty.toml";
+            output_path = "$XDG_CONFIG_HOME/satty/config.toml";
+          };
         };
       };
 
@@ -49,5 +54,8 @@
     };
   };
 
-  xdg.configFile."noctalia/templates/tmux.conf".source = ./templates/tmux.conf;
+  xdg.configFile = {
+    "noctalia/templates/tmux.conf".source = ./templates/tmux.conf;
+    "noctalia/templates/satty.toml".source = ./templates/satty.toml;
+  };
 }

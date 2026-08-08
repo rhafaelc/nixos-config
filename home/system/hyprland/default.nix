@@ -2,6 +2,5 @@
   imports = [
     ./hypr
     ./noctalia
-    ./satty
   ];
 }

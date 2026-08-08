@@ -1,0 +1,27 @@
+[general]
+fullscreen = true
+early-exit = true
+corner-roundness = 12
+initial-tool = "brush"
+copy-command = "wl-copy"
+annotation-size-factor = 2
+output-filename = "~/Pictures/Screenshots/satty-%Y-%m-%d_%H:%M:%S.png"
+action-on-enter = "save-to-clipboard"
+save-after-copy = false
+default-hide-toolbars = false
+primary-highlighter = "block"
+disable-notifications = false
+
+[font]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[color-palette]
+palette = [
+  "{{colors.primary.default.hex}}",
+  "{{colors.error.default.hex}}",
+  "{{colors.tertiary.default.hex}}",
+  "{{colors.secondary.default.hex}}",
+  "{{colors.primary_fixed_dim.default.hex}}",
+  "{{colors.secondary_fixed_dim.default.hex}}",
+]
