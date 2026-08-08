@@ -36,6 +36,10 @@
   services.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
 
-  security.pam.services.gdm.enableGnomeKeyring = true;
+  security.pam.services.gdm-password.enableGnomeKeyring = true;
   services.gnome.gnome-keyring.enable = true;
+  programs.seahorse.enable = true;
+
+  environment.systemPackages = [ pkgs.libsecret ];
+  environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
 }
