@@ -12,7 +12,7 @@ hosts/laptop/           this machine's entry point
   hardware-configuration.nix   generated, machine-specific — regenerate per machine
   variables.nix          username/hostname/email/timezone/locale
 nixos/                  system-level modules (Hyprland, GDM, Noctalia's recommended
-                         services, Steam)
+                         services, Steam, fcitx5)
 home/
   core.nix               base home-manager settings (username, stateVersion)
   programs/<app>/         one folder per app — includes the terminal (ghostty)
