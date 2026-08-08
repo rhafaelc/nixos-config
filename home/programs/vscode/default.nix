@@ -17,7 +17,7 @@ in
       # vscodevim.vim
 
       bbenoist.nix
-      catppuccin.catppuccin-vsc-icons
+      pkief.material-icon-theme
       github.copilot
       github.copilot-chat
       eamodio.gitlens
@@ -43,7 +43,7 @@ in
     ];
 
     profiles.default.userSettings = {
-      "workbench.iconTheme" = "catppuccin-mocha";
+      "workbench.iconTheme" = "material-icon-theme";
       "workbench.colorTheme" = "NoctaliaTheme";
       "editor.fontFamily" = lib.mkForce "JetBrainsMono Nerd Font";
       "terminal.integrated.fontFamily" = lib.mkForce "JetBrainsMono Nerd Font";
