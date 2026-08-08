@@ -14,8 +14,9 @@ hl.on('hyprland.start', function()
 
   -- workspace 3: anki
   hl.dispatch(hl.dsp.exec_cmd('anki', { workspace = '3 silent' }))
-  hl.dispatch(hl.dsp.exec_cmd('vesktop', { workspace = '3 silent' }))
+  hl.exec_cmd('sleep 2 && hyprctl dispatch exec "[workspace 3 silent] vesktop"')
 
-  -- special workspace: spotify
+  -- special workspace: spotify, obsidian
   hl.dispatch(hl.dsp.exec_cmd('spotify', { workspace = 'special:etc silent' }))
+  hl.dispatch(hl.dsp.exec_cmd('obsidian', { workspace = 'special:etc silent' }))
 end)
