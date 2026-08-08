@@ -25,6 +25,7 @@
 
       wallpaper = {
         enabled = true;
+        directory = "${config.home.homeDirectory}/Pictures/Wallpapers";
         default.path = "${config.home.homeDirectory}/Pictures/Wallpapers/wallpaper.jpg";
       };
     };
