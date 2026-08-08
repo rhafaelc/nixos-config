@@ -19,8 +19,8 @@
 
       settings = {
         globalOptions."Hotkey" = {
-          TriggerKeys = "Super+space";
-          EnumerateWithTriggerKeys = "True";
+          EnumerateWithTriggerKeys = true;
+          EnumerateGroupForwardKeys = "Super+space";
         };
 
         inputMethod = {
