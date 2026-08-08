@@ -11,6 +11,8 @@ in
   programs.vscode = {
     enable = true;
 
+    argvSettings.password-store = "gnome-libsecret";
+
     profiles.default.extensions = with pkgs.vscode-extensions; [
       # vscodevim.vim
 
