@@ -1,9 +1,4 @@
 { pkgs, ... }: {
-  environment.variables = {
-    GTK_IM_MODULE = "fcitx";
-    QT_IM_MODULE = "fcitx";
-  };
-
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
@@ -18,9 +13,18 @@
       ];
 
       settings = {
-        globalOptions."Hotkey" = {
-          EnumerateWithTriggerKeys = true;
-          EnumerateGroupForwardKeys = "Super+space";
+        globalOptions = {
+          Hotkey = {
+            EnumerateWithTriggerKeys = true;
+          };
+
+          "Hotkey/EnumerateForwardKeys" = {
+            "0" = "Super+space";
+          };
+
+          "Hotkey/EnumerateBackwardKeys" = {
+            "0" = "Super+Shift+space";
+          };
         };
 
         inputMethod = {
