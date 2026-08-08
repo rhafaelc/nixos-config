@@ -2,6 +2,7 @@ hl.on('hyprland.start', function()
   -- core services
   hl.exec_cmd('noctalia --daemon')
   hl.exec_cmd('wl-paste --watch cliphist store')
+  hl.exec_cmd('fcitx5 -d')
 
   -- apps
 

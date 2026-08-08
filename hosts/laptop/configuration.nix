@@ -12,6 +12,7 @@
     ./hardware-configuration.nix
     ../../nixos/hyprland
     ../../nixos/gaming
+    ../../nixos/fcitx5
   ];
 
   nix.gc = {
