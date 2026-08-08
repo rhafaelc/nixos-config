@@ -1,5 +1,7 @@
+local monitor = "eDP-1"
+
 hl.monitor({
-	output = "eDP-1",
+	output = monitor,
 	mode = "preferred",
 	position = "0x0",
 	scale = 1,
@@ -9,7 +11,7 @@ hl.monitor({
 for i = 1, 10 do
 	hl.workspace_rule({
 		workspace = i,
-		monitor = "eDP-1",
+		monitor = monitor,
 		persistent = (i <= 5),
 	})
 end
