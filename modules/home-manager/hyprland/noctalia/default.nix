@@ -26,6 +26,8 @@
             "qt"
             "ghostty"
           ];
+
+          community_ids = [ "vscode" ];
         };
       };
 
