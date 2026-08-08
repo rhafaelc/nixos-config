@@ -11,8 +11,6 @@ in
   programs.vscode = {
     enable = true;
 
-    argvSettings.password-store = "gnome-libsecret";
-
     profiles.default.extensions = with pkgs.vscode-extensions; [
       # vscodevim.vim
 
@@ -63,4 +61,14 @@ in
       "window.titleBarStyle" = "custom";
     };
   };
+
+  home.activation.vscodeArgvJson = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run mkdir -p "$HOME/.vscode"
+    run rm -f "$HOME/.vscode/argv.json"
+    run tee "$HOME/.vscode/argv.json" > /dev/null <<'EOF'
+    {
+      "password-store": "gnome-libsecret"
+    }
+    EOF
+  '';
 }
