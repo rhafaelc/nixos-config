@@ -11,5 +11,6 @@
     ./postman
     ./obsidian
     ./devenv
+    ./claude-code
   ];
 }
