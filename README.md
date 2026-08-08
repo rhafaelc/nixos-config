@@ -15,8 +15,9 @@ nixos/                  system-level modules (Hyprland, GDM, Noctalia's recommen
                          services, Steam)
 home/
   core.nix               base home-manager settings (username, stateVersion)
-  programs/<app>/         one folder per app (git, vscode, spotify, ...)
-  system/                 desktop/session-level modules (hyprland, terminal, shells, themes)
+  programs/<app>/         one folder per app — includes terminal emulators (ghostty,
+                          kitty) and shell tooling (programs/shell/: bash, zsh, starship)
+  system/                 desktop/session-level modules (hyprland, themes)
   wallpapers/              wallpaper images, staged to ~/Pictures/Wallpapers
 ```
 
@@ -51,7 +52,7 @@ Pull in newer flake inputs first with `nix flake update` (or `nix flake lock --u
 
 **A new app (home-manager program):** create `home/programs/<name>/default.nix`, add `./​<name>` to the `imports` list in `home/programs/default.nix`.
 
-**A new desktop/session module** (something that's part of the Hyprland session rather than a standalone app — a new noctalia-adjacent tool, a new terminal, etc.): create `home/system/<name>/default.nix`, add it to the `imports` list in `hosts/laptop/home.nix`.
+**A new desktop/session module** (session-level infrastructure, not a standalone app — a new noctalia-adjacent tool, wallpaper daemon, etc.): create `home/system/<name>/default.nix`, add it to the `imports` list in `hosts/laptop/home.nix`.
 
 **A new system-level (NixOS) module:** create `nixos/<name>/default.nix`, add it to the `imports` list in `hosts/laptop/configuration.nix`.
 
