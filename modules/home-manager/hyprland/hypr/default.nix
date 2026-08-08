@@ -29,8 +29,6 @@
 
     # Image viewing
     qimgv # Image viewer
-
-    kitty
   ];
 
   wayland.windowManager.hyprland = {
@@ -219,11 +217,11 @@ local terminal = 'ghostty'
 
 local fileManager = 'thunar'
 
-hl.bind(mainMod .. ' + ' .. 'RETURN', hl.dsp.exec_cmd 'ghostty')
+hl.bind(mainMod .. ' + ' .. 'RETURN', hl.dsp.exec_cmd(terminal))
 
 hl.bind(mainMod .. ' + ' .. 'R', hl.dsp.exec_cmd 'noctalia msg panel-toggle launcher')
 
-hl.bind(mainMod .. ' + ' .. 'E', hl.dsp.exec_cmd 'thunar')
+hl.bind(mainMod .. ' + ' .. 'E', hl.dsp.exec_cmd(fileManager))
 
 hl.bind(mainMod .. ' + ' .. 'Q', hl.dsp.window.close())
 
@@ -265,22 +263,6 @@ hl.bind('XF86AudioMute', hl.dsp.exec_cmd 'noctalia msg volume-mute', { locked = 
 hl.bind('XF86MonBrightnessUp', hl.dsp.exec_cmd 'noctalia msg brightness-up', { locked = true })
 
 hl.bind('XF86MonBrightnessDown', hl.dsp.exec_cmd 'noctalia msg brightness-down', { locked = true })
-
-for i = 1, 9 do
-  hl.bind(
-    mainMod .. ' + ' .. tostring(i),
-    hl.dsp.focus {
-      workspace = tostring(i),
-    }
-  )
-
-  hl.bind(
-    mainMod .. ' + SHIFT + ' .. tostring(i),
-    hl.dsp.window.move {
-      workspace = tostring(i),
-    }
-  )
-end
 
 -- numbered workspaces
 
