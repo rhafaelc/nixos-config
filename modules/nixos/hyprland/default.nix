@@ -3,9 +3,13 @@
   inputs,
   ...
 }: {
-  programs.hyprland = {
+  imports = [inputs.noctalia.nixosModules.default];
+
+  programs.hyprland.enable = true;
+
+  programs.noctalia = {
     enable = true;
-    # package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    recommendedServices.enable = true;
   };
 
   programs = {
