@@ -4,6 +4,7 @@
     type = "fcitx5";
     fcitx5 = {
       waylandFrontend = true;
+      ignoreUserConfig = true;
 
       addons = with pkgs; [
         fcitx5-gtk
