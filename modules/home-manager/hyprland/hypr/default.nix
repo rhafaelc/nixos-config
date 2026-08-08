@@ -221,7 +221,7 @@ local fileManager = 'thunar'
 
 hl.bind(mainMod .. ' + ' .. 'RETURN', hl.dsp.exec_cmd 'ghostty')
 
-hl.bind(mainMod .. ' + ' .. 'R', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call launcher toggle')
+hl.bind(mainMod .. ' + ' .. 'R', hl.dsp.exec_cmd 'noctalia msg panel-toggle launcher')
 
 hl.bind(mainMod .. ' + ' .. 'E', hl.dsp.exec_cmd 'thunar')
 
@@ -234,7 +234,7 @@ hl.bind(
   hl.dsp.exec_cmd "grim -g \"$(slurp -o -r -c '##ff0000ff')\" -t png - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
 )
 
-hl.bind(mainMod .. ' + CTRL + Q', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call lockScreen lock')
+hl.bind(mainMod .. ' + CTRL + Q', hl.dsp.exec_cmd 'noctalia msg session lock')
 
 hl.bind(mainMod .. ' + ' .. 'CTRL' .. ' + ' .. 'LEFT', hl.dsp.focus { workspace = 'e-1' })
 
@@ -244,27 +244,27 @@ hl.bind(mainMod .. ' + ' .. 'F', hl.dsp.window.fullscreen())
 
 -- Media controls
 
-hl.bind('XF86AudioPlay', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call media playPause', { locked = true })
+hl.bind('XF86AudioPlay', hl.dsp.exec_cmd 'noctalia msg media toggle', { locked = true })
 
-hl.bind('XF86AudioPause', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call media playPause', { locked = true })
+hl.bind('XF86AudioPause', hl.dsp.exec_cmd 'noctalia msg media toggle', { locked = true })
 
-hl.bind('XF86AudioNext', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call media next', { locked = true })
+hl.bind('XF86AudioNext', hl.dsp.exec_cmd 'noctalia msg media next', { locked = true })
 
-hl.bind('XF86AudioPrev', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call media previous', { locked = true })
+hl.bind('XF86AudioPrev', hl.dsp.exec_cmd 'noctalia msg media previous', { locked = true })
 
 -- Volume
 
-hl.bind('XF86AudioRaiseVolume', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call volume increase', { locked = true })
+hl.bind('XF86AudioRaiseVolume', hl.dsp.exec_cmd 'noctalia msg volume-up', { locked = true })
 
-hl.bind('XF86AudioLowerVolume', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call volume decrease', { locked = true })
+hl.bind('XF86AudioLowerVolume', hl.dsp.exec_cmd 'noctalia msg volume-down', { locked = true })
 
-hl.bind('XF86AudioMute', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call volume muteOutput', { locked = true })
+hl.bind('XF86AudioMute', hl.dsp.exec_cmd 'noctalia msg volume-mute', { locked = true })
 
 -- Brightness
 
-hl.bind('XF86MonBrightnessUp', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call brightness increase', { locked = true })
+hl.bind('XF86MonBrightnessUp', hl.dsp.exec_cmd 'noctalia msg brightness-up', { locked = true })
 
-hl.bind('XF86MonBrightnessDown', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call brightness decrease', { locked = true })
+hl.bind('XF86MonBrightnessDown', hl.dsp.exec_cmd 'noctalia msg brightness-down', { locked = true })
 
 for i = 1, 9 do
   hl.bind(
@@ -315,11 +315,11 @@ hl.bind(
 
 hl.bind('ALT + TAB', hl.dsp.window.cycle_next())
 
-hl.bind(mainMod .. ' + ' .. 'V', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call launcher clipboard')
+hl.bind(mainMod .. ' + ' .. 'V', hl.dsp.exec_cmd 'noctalia msg panel-toggle clipboard')
 
-hl.bind(mainMod .. ' + ' .. 'PERIOD', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call launcher emoji')
+hl.bind(mainMod .. ' + ' .. 'PERIOD', hl.dsp.exec_cmd 'noctalia msg panel-toggle launcher /emo')
 
-hl.bind(mainMod .. ' + ' .. 'COMMA', hl.dsp.exec_cmd 'qs -c noctalia-shell ipc call settings toggle')
+hl.bind(mainMod .. ' + ' .. 'COMMA', hl.dsp.exec_cmd 'noctalia msg settings-toggle')
 
 hl.bind(mainMod .. ' + ' .. 'mouse:272', hl.dsp.window.drag(), { mouse = true })
 
