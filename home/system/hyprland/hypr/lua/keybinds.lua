@@ -9,8 +9,6 @@ hl.bind(mainMod .. ' + ' .. 'R', hl.dsp.exec_cmd 'noctalia msg panel-toggle laun
 
 hl.bind(mainMod .. ' + ' .. 'E', hl.dsp.exec_cmd(fileManager))
 
-hl.bind(mainMod .. ' + ' .. 'SPACE', hl.dsp.exec_cmd 'fcitx5-remote -t')
-
 hl.bind(mainMod .. ' + ' .. 'Q', hl.dsp.window.close())
 
 hl.bind('ALT' .. ' + ' .. 'F4', hl.dsp.window.close())
