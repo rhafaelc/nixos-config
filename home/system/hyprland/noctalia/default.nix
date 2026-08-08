@@ -27,7 +27,10 @@
             "ghostty"
           ];
 
-          community_ids = [ "vscode" ];
+          community_ids = [
+            "vscode"
+            "neovim"
+          ];
         };
       };
 
