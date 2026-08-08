@@ -14,8 +14,8 @@
     settings = {
       theme = {
         mode = "dark";
-        source = "builtin";
-        builtin = "Catppuccin";
+        source = "wallpaper";
+        wallpaper_scheme = "m3-tonal-spot";
       };
 
       wallpaper = {
