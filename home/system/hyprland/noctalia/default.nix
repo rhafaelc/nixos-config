@@ -31,6 +31,12 @@
             "vscode"
             "neovim"
           ];
+
+          user.tmux = {
+            input_path = "$XDG_CONFIG_HOME/noctalia/templates/tmux.conf";
+            output_path = "$XDG_CONFIG_HOME/tmux/theme.conf";
+            post_hook = "tmux source-file $XDG_CONFIG_HOME/tmux/theme.conf";
+          };
         };
       };
 
@@ -42,4 +48,5 @@
     };
   };
 
+  xdg.configFile."noctalia/templates/tmux.conf".source = ./templates/tmux.conf;
 }
