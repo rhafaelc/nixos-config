@@ -35,7 +35,6 @@
       };
       animations.content = ./lua/animations.lua;
       autostart.content = ./lua/autostart.lua;
-      idle.content = ./lua/idle.lua;
       general.content = ./lua/general.lua;
       input.content = ./lua/input.lua;
       keybinds.content = ./lua/keybinds.lua;

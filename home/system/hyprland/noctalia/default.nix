@@ -36,7 +36,7 @@
           user.tmux = {
             input_path = "$XDG_CONFIG_HOME/noctalia/templates/tmux.conf";
             output_path = "$XDG_CONFIG_HOME/tmux/theme.conf";
-            post_hook = "tmux source-file $XDG_CONFIG_HOME/tmux/theme.conf";
+            post_hook = "tmux source-file \${XDG_CONFIG_HOME:-$HOME/.config}/tmux/theme.conf";
           };
 
           user.satty = {
@@ -50,6 +50,40 @@
         enabled = true;
         directory = "${config.home.homeDirectory}/Pictures/Wallpapers";
         default.path = "${config.home.homeDirectory}/Pictures/Wallpapers/wallpaper.jpg";
+      };
+
+      hooks = {
+        wallpaper_changed = "pkill -f thunar || true";
+        colors_changed = "pkill -f thunar || true";
+        theme_mode_changed = "pkill -f thunar || true";
+      };
+
+      idle = {
+        pre_action_fade_seconds = 2.0;
+        behavior = {
+          dim = {
+            enabled = true;
+            timeout = 150;
+            action = "command";
+            command = "brightnessctl -s set 10";
+            resume_command = "brightnessctl -r";
+          };
+          lock = {
+            enabled = true;
+            timeout = 300;
+            action = "lock";
+          };
+          "screen-off" = {
+            enabled = true;
+            timeout = 330;
+            action = "screen_off";
+          };
+          suspend = {
+            enabled = true;
+            timeout = 1800;
+            action = "lock_and_suspend";
+          };
+        };
       };
     };
   };
