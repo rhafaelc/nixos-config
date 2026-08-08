@@ -10,7 +10,7 @@ hl.on('hyprland.start', function()
   hl.dispatch(hl.dsp.exec_cmd('zen', { workspace = '1 silent' }))
 
   -- workspace 2: okular
-  -- hl.dispatch(hl.dsp.exec_cmd('okular', { workspace = '2 silent' }))
+  hl.dispatch(hl.dsp.exec_cmd('okular', { workspace = '2 silent' }))
 
   -- workspace 3: anki
   hl.dispatch(hl.dsp.exec_cmd('anki', { workspace = '3 silent' }))

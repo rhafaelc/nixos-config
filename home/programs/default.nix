@@ -15,5 +15,6 @@
     ./ghostty
     ./tmux
     ./shell
+    ./okular
   ];
 }
