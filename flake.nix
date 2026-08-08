@@ -10,7 +10,6 @@
 
     zen-browser.url = "github:youwen5/zen-browser-flake";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
     noctalia = {
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
