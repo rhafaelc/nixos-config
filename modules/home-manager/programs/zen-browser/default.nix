@@ -5,9 +5,9 @@
 
 let
   system = "x86_64-linux";
-in {
+in
+{
   home.packages = [
     inputs.zen-browser.packages."${system}".default
   ];
 }
-

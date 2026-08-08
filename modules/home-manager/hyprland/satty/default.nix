@@ -28,4 +28,4 @@
       "#cba6f7",  # Catppuccin mauve
     ]
   '';
-} 
+}

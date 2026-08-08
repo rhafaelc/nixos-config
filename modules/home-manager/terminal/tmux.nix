@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.tmux = {
     enable = true;
     shell = "${pkgs.zsh}/bin/zsh";
@@ -20,8 +20,7 @@
     plugins = with pkgs; [
       {
         plugin = tmuxPlugins.vim-tmux-navigator;
-        extraConfig = ''
-        '';
+        extraConfig = "";
       }
       # {
       #   plugin = tmuxPlugins.catppuccin;

@@ -7,6 +7,5 @@
   home.packages = [
     pkgs.ripgrep
   ];
-	programs.neovim.enable = true;
+  programs.neovim.enable = true;
 }
-

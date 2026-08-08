@@ -3,9 +3,11 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   vsx = inputs.nix-vscode-extensions.extensions."x86_64-linux".vscode-marketplace;
-in {
+in
+{
   programs.vscode = {
     enable = true;
 

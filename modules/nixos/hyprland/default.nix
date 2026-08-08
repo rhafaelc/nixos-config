@@ -2,8 +2,9 @@
   pkgs,
   inputs,
   ...
-}: {
-  imports = [inputs.noctalia.nixosModules.default];
+}:
+{
+  imports = [ inputs.noctalia.nixosModules.default ];
 
   programs.hyprland.enable = true;
 

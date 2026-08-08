@@ -1,6 +1,7 @@
 {
   pkgs,
   ...
-} : {
-  home.packages = [pkgs.spotify];
+}:
+{
+  home.packages = [ pkgs.spotify ];
 }

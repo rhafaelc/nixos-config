@@ -1,5 +1,5 @@
 { pkgs, variables, ... }: {
-  home.packages = [pkgs.gh];
+  home.packages = [ pkgs.gh ];
 
   programs.gh.enable = true;
   programs.git = {
@@ -11,7 +11,7 @@
         email = variables.email;
       };
       init.defaultBranch = "main";
-      safe.directory = ["*"];
+      safe.directory = [ "*" ];
     };
   };
 }

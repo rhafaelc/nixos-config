@@ -3,7 +3,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     inputs.noctalia.homeModules.default
   ];
@@ -19,7 +20,12 @@
 
         templates = {
           enable_builtin_templates = true;
-          builtin_ids = ["gtk3" "gtk4" "qt" "ghostty"];
+          builtin_ids = [
+            "gtk3"
+            "gtk4"
+            "qt"
+            "ghostty"
+          ];
         };
       };
 

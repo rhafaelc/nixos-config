@@ -17,34 +17,40 @@
     };
   };
 
-  outputs = {
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
-  in {
-    nixosConfigurations = {
-      default = let
-        variables = import ./hosts/default/variables.nix;
-      in
-        nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs variables;};
-          modules = [
-            ./hosts/default/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = {inherit inputs variables;};
-                users.${variables.username} = ./hosts/default/home.nix;
-                backupFileExtension = "backup";
-              };
-            }
-          ];
-        };
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+    let
+      system = "x86_64-linux";
+    in
+    {
+      nixosConfigurations = {
+        default =
+          let
+            variables = import ./hosts/default/variables.nix;
+          in
+          nixpkgs.lib.nixosSystem {
+            specialArgs = { inherit inputs variables; };
+            modules = [
+              ./hosts/default/configuration.nix
+              home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  extraSpecialArgs = { inherit inputs variables; };
+                  users.${variables.username} = ./hosts/default/home.nix;
+                  backupFileExtension = "backup";
+                };
+              }
+            ];
+          };
 
+      };
+
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt;
     };
-  };
 }
