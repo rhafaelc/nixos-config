@@ -14,8 +14,8 @@ hl.bind(mainMod .. ' + ' .. 'Q', hl.dsp.window.close())
 hl.bind('ALT' .. ' + ' .. 'F4', hl.dsp.window.close())
 
 hl.bind(
-  mainMod .. ' + SHIFT + S',
-  hl.dsp.exec_cmd "grim -g \"$(slurp -o -r -c '##ff0000ff')\" -t png - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
+        mainMod .. ' + SHIFT + S',
+        hl.dsp.exec_cmd "grim -g \"$(slurp -o -r -c '##ff0000ff')\" -t png - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
 )
 
 hl.bind(mainMod .. ' + CTRL + Q', hl.dsp.exec_cmd 'noctalia msg session lock')
@@ -53,21 +53,21 @@ hl.bind('XF86MonBrightnessDown', hl.dsp.exec_cmd 'noctalia msg brightness-down',
 -- numbered workspaces
 
 for i = 1, 9 do
-  -- switch workspace
-  hl.bind(
-    mainMod .. ' + ' .. tostring(i),
-    hl.dsp.focus {
-      workspace = tostring(i),
-    }
-  )
+        -- switch workspace
+        hl.bind(
+                mainMod .. ' + ' .. tostring(i),
+                hl.dsp.focus {
+                        workspace = tostring(i),
+                }
+        )
 
-  -- move focused window to workspace
-  hl.bind(
-    mainMod .. ' + SHIFT + ' .. tostring(i),
-    hl.dsp.window.move {
-      workspace = tostring(i),
-    }
-  )
+        -- move focused window to workspace
+        hl.bind(
+                mainMod .. ' + SHIFT + ' .. tostring(i),
+                hl.dsp.window.move {
+                        workspace = tostring(i),
+                }
+        )
 end
 
 -- special workspace bindings
@@ -75,13 +75,15 @@ end
 hl.bind(mainMod .. ' + ' .. 'U', hl.dsp.workspace.toggle_special 'etc')
 
 hl.bind(
-  mainMod .. ' + ' .. 'SHIFT' .. ' + ' .. 'U',
-  hl.dsp.window.move {
-    workspace = 'special:etc',
-  }
+        mainMod .. ' + ' .. 'SHIFT' .. ' + ' .. 'U',
+        hl.dsp.window.move {
+                workspace = 'special:etc',
+        }
 )
 
 hl.bind('ALT + TAB', hl.dsp.window.cycle_next())
+
+hl.bind('ALT + SHIFT + TAB', hl.dsp.window.cycle_prev())
 
 hl.bind(mainMod .. ' + ' .. 'V', hl.dsp.exec_cmd 'noctalia msg panel-toggle clipboard')
 
@@ -98,10 +100,6 @@ hl.bind(mainMod .. ' + ' .. 'CTRL' .. ' + ' .. 'mouse:272', hl.dsp.window.resize
 hl.bind(mainMod .. ' + ' .. 'mouse_down', hl.dsp.focus { workspace = 'e+1' })
 
 hl.bind(mainMod .. ' + ' .. 'mouse_up', hl.dsp.focus { workspace = 'e-1' })
-
-hl.bind(mainMod .. ' + TAB', function() hl.exec_cmd [[hyprctl eval "hl.config({ general = { layout = 'scrolling' } })"]] end)
-
-hl.bind(mainMod .. ' + SHIFT + TAB', function() hl.exec_cmd [[hyprctl eval "hl.config({ general = { layout = 'dwindle' } })"]] end)
 
 hl.bind(mainMod .. ' + H', hl.dsp.focus { direction = 'left' })
 hl.bind(mainMod .. ' + L', hl.dsp.focus { direction = 'right' })
