@@ -25,6 +25,7 @@
             "gtk4"
             "qt"
             "ghostty"
+            "hyprland"
           ];
 
           community_ids = [

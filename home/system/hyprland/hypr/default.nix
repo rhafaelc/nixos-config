@@ -48,6 +48,7 @@
       keybinds.content = ./lua/keybinds.lua;
       monitors.content = ./lua/monitors.lua;
       rules.content = ./lua/rules.lua;
+      noctalia-colors.content = ./lua/noctalia-colors.lua;
     };
   };
 }
