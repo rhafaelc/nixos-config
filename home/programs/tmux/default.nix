@@ -6,6 +6,7 @@
     prefix = "C-s";
     mouse = true;
     terminal = "tmux-256color";
+    historyLimit = 50000;
     extraConfig = ''
       set-option -g status-position top
       set -sg escape-time 10
@@ -15,6 +16,42 @@
       set -g pane-border-style fg=default,bg=default
       set -g window-style fg=default,bg=default
       set -g window-active-style fg=default,bg=default
+
+      set -g renumber-windows on
+      set -g detach-on-destroy on
+      set -ga terminal-overrides ",*256col*:Tc"
+      setw -g window-status-separator ""
+      setw -g monitor-activity on
+      set -g visual-activity off
+      set -g focus-events on
+
+      source-file ~/.config/tmux/theme.conf
+
+      # Better window splitting
+      bind | split-window -h -c "#{pane_current_path}"
+      bind - split-window -v -c "#{pane_current_path}"
+      unbind '"'
+      unbind %
+
+      # Easy config reload
+      bind r source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded!"
+
+      # Resize panes with vim keys
+      bind -r H resize-pane -L 5
+      bind -r J resize-pane -D 5
+      bind -r K resize-pane -U 5
+      bind -r L resize-pane -R 5
+
+      # Copy mode bindings
+      bind-key -T copy-mode-vi v send-keys -X begin-selection
+      bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+      bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
+
+      # Synchronize panes
+      bind S setw synchronize-panes
+
+      # Clear screen and history
+      bind C-l send-keys 'C-l' \; clear-history
     '';
 
     plugins = with pkgs; [
@@ -22,27 +59,6 @@
         plugin = tmuxPlugins.vim-tmux-navigator;
         extraConfig = "";
       }
-      # {
-      #   plugin = tmuxPlugins.catppuccin;
-      #   extraConfig = ''
-      #     set -g @catppuccin_flavor "mocha"
-      #     set -g @catppuccin_window_status_style "rounded"
-      #
-      #     set -ogq @catppuccin_window_default_text "#W"
-      #     set -ogq @catppuccin_window_current_text "#W"
-      #
-      #     set -g status-right-length 100
-      #     set -g status-left-length 100
-      #
-      #     set -g @catppuccin_status_modules_right "directory host session"
-      #     set -g @catppuccin_status_left_separator  " "
-      #     set -g @catppuccin_status_right_separator ""
-      #     set -g @catppuccin_status_fill "icon"
-      #     set -g @catppuccin_status_connect_separator "no"
-      #
-      #     set -g @catppuccin_directory_text "#{pane_current_path}"
-      #   '';
-      # }
     ];
   };
 }
