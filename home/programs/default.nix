@@ -11,7 +11,7 @@
     ./postman
     ./obsidian
     ./devenv
-    ./claude-code
+    ./t3-code
     ./ghostty
     ./tmux
     ./shell
