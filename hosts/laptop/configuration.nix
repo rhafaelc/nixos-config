@@ -114,6 +114,25 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Work around the pnpm dependency hash in the pinned nixpkgs package.
+  # Stop applying the override once nixpkgs changes the affected hash.
+  nixpkgs.overlays = [
+    (_final: prev: {
+      typescript-language-server =
+        if
+          prev.typescript-language-server.pnpmDeps.outputHash
+          == "sha256-MUSxDMlbG21KSesGdEvqa2kEpuVfLlXRUX1qV/FGsSo="
+        then
+          prev.typescript-language-server.overrideAttrs (old: {
+            pnpmDeps = old.pnpmDeps.overrideAttrs {
+              outputHash = "sha256-xR/EF60lVBsITKgH7wCM2wHM46PFQevD51KfCENSUH4=";
+            };
+          })
+        else
+          prev.typescript-language-server;
+    })
+  ];
+
   environment.systemPackages = with pkgs; [ vim ];
 
   # Enable the OpenSSH daemon.
