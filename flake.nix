@@ -1,6 +1,13 @@
 {
   description = "Nixos config flake";
 
+  nixConfig = {
+    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-trusted-public-keys = [
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
@@ -10,10 +17,8 @@
 
     zen-browser.url = "github:youwen5/zen-browser-flake";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    noctalia = {
-      url = "github:noctalia-dev/noctalia";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # Use upstream's dependencies so the official binary cache matches.
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";

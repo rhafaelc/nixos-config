@@ -18,6 +18,10 @@
     options = "--delete-older-than 30d";
   };
   nix.settings.auto-optimise-store = true;
+  nix.settings.extra-substituters = [ "https://noctalia.cachix.org" ];
+  nix.settings.extra-trusted-public-keys = [
+    "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
