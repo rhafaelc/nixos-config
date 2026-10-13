@@ -16,7 +16,7 @@ nixos/                  system-level modules (Hyprland, GDM, Noctalia's recommen
 home/
   core.nix               base home-manager settings (username, stateVersion)
   programs/<app>/         one folder per app — includes the terminal (ghostty)
-                          and shell tooling (programs/shell/: bash, zsh, starship)
+                          and shell tooling (programs/shell/: bash, fish, starship)
   system/                 desktop/session-level modules (hyprland, themes)
   wallpapers/              wallpaper images, staged to ~/Pictures/Wallpapers
 ```

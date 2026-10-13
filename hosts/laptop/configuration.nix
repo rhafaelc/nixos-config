@@ -100,10 +100,10 @@
       "docker"
     ];
     packages = with pkgs; [ ];
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
-  programs.zsh.enable = true;
+  programs.fish.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;

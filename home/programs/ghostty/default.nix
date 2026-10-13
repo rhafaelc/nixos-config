@@ -4,7 +4,7 @@
 
     ghostty = {
       enable = true;
-      enableZshIntegration = true;
+      enableFishIntegration = true;
 
       settings = {
         theme = "noctalia";
@@ -19,7 +19,7 @@
         window-padding-x = 4;
         window-padding-y = 4;
         font-size = lib.mkForce 12;
-        shell-integration = lib.mkForce "zsh";
+        shell-integration = lib.mkForce "fish";
         gtk-titlebar = false;
       };
     };
