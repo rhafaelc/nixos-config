@@ -15,7 +15,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser.url = "github:youwen5/zen-browser-flake";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     # Use upstream's dependencies so the official binary cache matches.
     noctalia.url = "github:noctalia-dev/noctalia/cachix";

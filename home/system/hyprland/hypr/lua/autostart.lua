@@ -11,7 +11,7 @@ hl.on("hyprland.start", function()
   -- apps
 
   -- workspace 1: browser
-  hl.dispatch(hl.dsp.exec_cmd("zen", { workspace = "1 silent" }))
+  hl.dispatch(hl.dsp.exec_cmd("zen-beta", { workspace = "1 silent" }))
 
   -- workspace 2: okular
   hl.dispatch(hl.dsp.exec_cmd("okular", { workspace = "2 silent" }))
